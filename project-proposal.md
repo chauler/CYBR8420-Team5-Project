@@ -6,6 +6,7 @@ The software chosen for this project is the Ladybird browser, located [this webs
 ## Operational Environment
 
 ## Motivation
+Our motivation for selecting this project was the large scope and heavy use of internal code giving lots of potential for security contribution. The many types of input (user interaction, IPC, HTML pages, other network communications) provide many potential attack vectors. Also, the large number of contributors and pull requests show a project that is built for outside contribution.
 
 ## Project Description
 Ladybird is an open-source cross-platform browser forked from another open-source project, SerenityOS. SerenityOS is a from-scratch operating system project, and Ladybird inherited much of its code. This from-scratch philosophy means that Ladybird has its own JavaScript engine, cryptography libraries, and handles its own text encoding, regex parsing, rendering, etc.
