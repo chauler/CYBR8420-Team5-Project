@@ -12,7 +12,9 @@ Ladybird is an open-source cross-platform browser forked from another open-sourc
 
 The project was started by Andreas Kling and is managed by a non-profit organization dedicated to the governance of the project. The project has over a thousand contributors throughout its history, and regularly receives hundreds of pull requests from dozens of contributors per month.
 
-The project is mostly written in C++ with some newer code written in Swift.
+The software is mostly written in C++ with some newer code written in Swift. Ladybird runs on Unix-like operating systems, including Linux and MacOS. [Documentation](https://github.com/LadybirdBrowser/ladybird/tree/master/Documentation) can be found in the `/Documentation` directory of the repository, including extensive guides on building the project and contributing. 
+
+The software uses a BSD-2 license. Contribution guidelines cover code style, interaction with other contributors, and rules for project management. Contributions are expected to use C++23 and follow existing code style. AI assisted contributions are allowed, but use of AI in issue generation or other interaction with humans in the project is not allowed.
 
 ### Project's Security History
 
