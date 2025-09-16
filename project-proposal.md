@@ -4,6 +4,20 @@
 The software chosen for this project is the Ladybird browser, located at [this website](https://ladybird.org/) and [this Github repository](https://github.com/LadybirdBrowser/ladybird).
 
 ## Operational Environment
+Link to open source project: https://github.com/LadybirdBrowser/ladybird
+
+Link to Site Isolation issue that we are considering contributing to: https://github.com/LadybirdBrowser/ladybird/issues/302
+
+I think the most likely operational environment for using the LadyBird browser is either home or school. Realistically, most professional or government environments are going to use one of the predominant browsers (in my opinion)
+
+For the hypothetical environment system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser are User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. I had to do some research on what the common components of a browser were. This is a good reference: https://educatecomputer.com/what-is-a-web-browser/
+
+Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. I think the other systems could be the various websites that the browser will visit, both safe and malicious.
+
+
+The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks.
+
+Site Isolation would limit the blast radius of a Cross Site Scripting attack. If you visited a malicious website, the site isolation inside of the browser would limit the attack to only the singe tab. It would not allow the malicious website to see data that was exposed in the other browser tabs.
 
 ## Motivation
 Our motivation for selecting this project was the large scope and heavy use of internal code giving lots of potential for security contribution. The many types of input (user interaction, IPC, HTML pages, other network communications) provide many potential attack vectors. Also, the large number of contributors and pull requests show a project that is built for outside contribution.
