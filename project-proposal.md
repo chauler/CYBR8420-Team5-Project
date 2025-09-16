@@ -1,19 +1,14 @@
 # CYBR8420-Team5-Project
 
 ## The Software
-The software chosen for this project is the Ladybird browser. The project website is located at [ladybird.org](https://ladybird.org/) and the code is located in  [this Github repository](https://github.com/LadybirdBrowser/ladybird).
+The software chosen for this project is the Ladybird browser. The project website is located at [ladybird.org](https://ladybird.org/) and the code is located in [Github](https://github.com/LadybirdBrowser/ladybird). The specific isolation issue that we are considering contributing to is [302](https://github.com/LadybirdBrowser/ladybird/issues/302).
 
 ## Operational Environment
-Link to open source project: https://github.com/LadybirdBrowser/ladybird
-
-The specific isolatio issue that we are considering contributing to is:
- https://github.com/LadybirdBrowser/ladybird/issues/302
-
 The inferred operational environment for using the LadyBird browser would either be home or school. 
 There would be limited use of a browser such as LabyBird in professional or government environments due to 
 the use of predominant browsers such as Google Chrome and Microsoft Edge due to the wide adoption and reliability of these browsers within these environments.
 
-In terms of the systems engineering view, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
+In the hypothetical environmental system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
 
 Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. The other systems could be the various websites that the browser will visit, both safe and malicious.
 
