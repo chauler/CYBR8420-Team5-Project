@@ -11,13 +11,17 @@ Our motivation for selecting this project was the large scope and heavy use of i
 ## Project Description
 Ladybird is an open-source cross-platform browser forked from another open-source project, SerenityOS. SerenityOS is a from-scratch operating system project, and Ladybird inherited much of its code. This from-scratch philosophy means that Ladybird has its own JavaScript engine, cryptography libraries, and handles its own text encoding, regex parsing, rendering, etc.
 
-The project was started by Andreas Kling and is managed by a non-profit organization dedicated to the governance of the project. The project has over a thousand contributors throughout its history, and regularly receives hundreds of pull requests from dozens of contributors per month.
+The project was started by Andreas Kling and is managed by a non-profit organization dedicated to the governance of the project. The project has over a thousand contributors throughout its history and regularly receives hundreds of pull requests from dozens of contributors per month.
 
 The software is mostly written in C++ with some newer code written in Swift. Ladybird runs on Unix-like operating systems, including Linux and MacOS. [Documentation](https://github.com/LadybirdBrowser/ladybird/tree/master/Documentation) can be found in the `/Documentation` directory of the repository, including extensive guides on building the project and contributing. 
 
 The software uses a BSD-2 license. Contribution guidelines cover code style, interaction with other contributors, and rules for project management - these rules include guidelines for reporting security issues, which state that public Github issues may be utilized as the software is not yet officially released. Contributions are expected to use C++23 and follow existing code style. AI assisted contributions are allowed, but use of AI in issue generation or other interaction with humans in the project is not allowed.
 
 ### Project's Security History
-The project's origins in SerenityOS mean that many security topics were put off for later in favor of other progress. However, the project has begun to take itself more seriously, with an official governance structure and an Alpha release planned for Summer 2026. Issues such as cross-site scripting and request forgery, content security policy violations, and iframe sandboxing are acknowledged issues that have not been dealt with at this point. There is not much information readily available regarding patched security vulnerabilities, at least through the typical avenue of public Github issues.
+The project's origins in SerenityOS mean that many security topics were put off for later in favor of other progress. However, the project has begun to take itself more seriously, with an official governance structure and an Alpha release planned for Summer 2026. Issues such as cross-site scripting and request forgery, content security policy violations, and iframe sandboxing are acknowledged issues that have not been dealt with at this point. The project is being architected with security in mind - see the below image for the planned process architecture of a single browser instance. 
+
+![Process Architecture](https://github.com/LadybirdBrowser/ladybird/blob/bbcd8bd97ca5b3bbf93a6c5183b89bd887c67e54/Documentation/Images/processes.png)
+
+There is not much information readily available regarding patched security vulnerabilities, at least through the typical avenue of public Github issues.
 
 ## Individual Reflections
