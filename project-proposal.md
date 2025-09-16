@@ -17,6 +17,8 @@ In terms of the hypothetical enviornment systerm diagram, the system of interest
 
 Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. The other systems could be the various websites that the browser will visit, both safe and malicious.
 
+Existing security features include the use of separate processes for each tab, including separate renderers and Frame objects for individual pages and iframes. The software also features a JavaScript engine without compilation
+
 The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks.
 
 Site Isolation would limit the blast radius of a Cross Site Scripting attack. If you visited a malicious website, the site isolation inside of the browser would limit the attack to only the singe tab. It would not allow the malicious website to see data that was exposed in the other browser tabs.
