@@ -38,4 +38,14 @@ The project's origins in SerenityOS mean that many security topics were put off 
 
 There is not much information readily available regarding patched security vulnerabilities, at least through the typical avenue of public Github issues.
 
+**Observations from Open Hub:**
+
+- Open Hub reports that no known vulnerabilities have been listed across Ladybird’s recent versions.
+
+- However, its Security Confidence Index is rated as “Poor”, which reflects limited or no history of published CVEs, making it harder to judge the project’s responsiveness to security issues.
+
+- The codebase is large (~774,000 lines of C++ and related languages), which increases the attack surface and potential for hidden vulnerabilities.
+
+- With ~1,400 contributors and thousands of commits per year, active development is ongoing, but this also introduces a higher chance of inconsistent security practices if strong code review isn’t enforced.
+
 ## Individual Reflections
