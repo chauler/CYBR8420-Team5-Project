@@ -47,6 +47,11 @@ There is not much information readily available regarding patched security vulne
 
 - With ~1,400 contributors and thousands of commits per year, active development is ongoing, but this also introduces a higher chance of inconsistent security practices if strong code review isn’t enforced.
 
+**Systems Engineering View**
+
+<img width="1211" height="968" alt="image" src="https://github.com/user-attachments/assets/33d464d7-33d7-4482-a900-9e8bc12671a5" />
+
+
 ## Individual Reflections
 From this assignment, I learned more about the details and makeup of a web browser. I use a web browser daily, but I rarely think about components and the details of how the browser works. In order to build out the system engineering view, I needed to know the components and architecture of a web browser. Having a good understanding of how the software package works helps identify misuse cases and potential software assurance improvements. The examples of system engineering views from previous years from past projects were helpful to make sure we were including the correct level of detail in our system engineering view.
 
