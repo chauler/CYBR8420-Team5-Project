@@ -13,7 +13,11 @@ The inferred operational environment for using the LadyBird browser would either
 There would be limited use of a browser such as LabyBird in professional or government environments due to 
 the use of predominant browsers such as Google Chrome and Microsoft Edge due to the wide adoption and reliability of these browsers within these environments.
 
+<<<<<<< HEAD
 In the hypothetical enviornment system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
+=======
+In terms of the hypothetical enviornment system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
+>>>>>>> 76701ed55bb5ac4b9e731c2c64b1476ab2f293b6
 
 Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. The other systems could be the various websites that the browser will visit, both safe and malicious.
 
@@ -21,7 +25,7 @@ Existing security features include the use of separate processes for each tab, i
 
 The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks.
 
-Site Isolation would limit the blast radius of a Cross Site Scripting attack. If you visited a malicious website, the site isolation inside of the browser would limit the attack to only the singe tab. It would not allow the malicious website to see data that was exposed in the other browser tabs.
+Site Isolation would limit the blast radius of a Cross Site Scripting attack. If you visited a malicious website, the site isolation inside of the browser would limit the attack to only the single tab. It would not allow the malicious website to see data that was exposed in the other browser tabs.
 
 ## Motivation
 Our motivation for selecting this project was the large scope and heavy use of internal code giving lots of potential for security contribution. The many types of input (user interaction, IPC, HTML pages, other network communications) provide many potential attack vectors. Also, the large number of contributors and pull requests show a project that is built for outside contribution.
