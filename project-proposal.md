@@ -6,13 +6,16 @@ The software chosen for this project is the Ladybird browser, located at [this w
 ## Operational Environment
 Link to open source project: https://github.com/LadybirdBrowser/ladybird
 
-Link to Site Isolation issue that we are considering contributing to: https://github.com/LadybirdBrowser/ladybird/issues/302
+The specific isolatio issue that we are considering contributing to is:
+ https://github.com/LadybirdBrowser/ladybird/issues/302
 
-I think the most likely operational environment for using the LadyBird browser is either home or school. Realistically, most professional or government environments are going to use one of the predominant browsers (in my opinion)
+The inferred operational environment for using the LadyBird browser would either be home or school. 
+There would be limited use of a browser such as LabyBird in professional or government environments due to 
+the use of predominant browsers such as Google Chrome and Microsoft Edge due to the wide adoption and reliability of these browsers within these environments.
 
-For the hypothetical environment system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser are User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. I had to do some research on what the common components of a browser were. This is a good reference: https://educatecomputer.com/what-is-a-web-browser/
+In terms of the hypothetical enviornment systerm diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
 
-Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. I think the other systems could be the various websites that the browser will visit, both safe and malicious.
+Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. The other systems could be the various websites that the browser will visit, both safe and malicious.
 
 The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks.
 
