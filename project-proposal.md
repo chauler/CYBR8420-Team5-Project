@@ -13,11 +13,7 @@ The inferred operational environment for using the LadyBird browser would either
 There would be limited use of a browser such as LabyBird in professional or government environments due to 
 the use of predominant browsers such as Google Chrome and Microsoft Edge due to the wide adoption and reliability of these browsers within these environments.
 
-<<<<<<< HEAD
-In the hypothetical enviornment system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
-=======
-In terms of the hypothetical enviornment system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
->>>>>>> 76701ed55bb5ac4b9e731c2c64b1476ab2f293b6
+In terms of the systems engineering view, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
 
 Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. The other systems could be the various websites that the browser will visit, both safe and malicious.
 
