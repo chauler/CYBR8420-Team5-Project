@@ -54,7 +54,7 @@ There is not much information readily available regarding patched security vulne
 
 **Systems Engineering View**
 
-<img width="1211" height="968" alt="image" src="https://github.com/user-attachments/assets/33d464d7-33d7-4482-a900-9e8bc12671a5" />
+<img width="842" height="661" alt="image" src="https://github.com/user-attachments/assets/fd5e3b54-ee23-426b-9e88-6a6fbbb51bdc" />
 
 
 ## Individual Reflections
