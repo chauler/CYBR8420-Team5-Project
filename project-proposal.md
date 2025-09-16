@@ -1,7 +1,7 @@
 # CYBR8420-Team5-Project
 
 ## The Software
-The software chosen for this project is the Ladybird browser, located [this website](https://ladybird.org/) and [this Github repository](https://github.com/LadybirdBrowser/ladybird).
+The software chosen for this project is the Ladybird browser, located at [this website](https://ladybird.org/) and [this Github repository](https://github.com/LadybirdBrowser/ladybird).
 
 ## Operational Environment
 
