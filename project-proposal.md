@@ -15,8 +15,9 @@ The project was started by Andreas Kling and is managed by a non-profit organiza
 
 The software is mostly written in C++ with some newer code written in Swift. Ladybird runs on Unix-like operating systems, including Linux and MacOS. [Documentation](https://github.com/LadybirdBrowser/ladybird/tree/master/Documentation) can be found in the `/Documentation` directory of the repository, including extensive guides on building the project and contributing. 
 
-The software uses a BSD-2 license. Contribution guidelines cover code style, interaction with other contributors, and rules for project management. Contributions are expected to use C++23 and follow existing code style. AI assisted contributions are allowed, but use of AI in issue generation or other interaction with humans in the project is not allowed.
+The software uses a BSD-2 license. Contribution guidelines cover code style, interaction with other contributors, and rules for project management - these rules include guidelines for reporting security issues, which state that public Github issues may be utilized as the software is not yet officially released. Contributions are expected to use C++23 and follow existing code style. AI assisted contributions are allowed, but use of AI in issue generation or other interaction with humans in the project is not allowed.
 
 ### Project's Security History
+The project's origins in SerenityOS mean that many security topics were put off for later in favor of other progress. However, the project has begun to take itself more seriously, with an official governance structure and an Alpha release planned for Summer 2026. Issues such as cross-site scripting and request forgery, content security policy violations, and iframe sandboxing are acknowledged issues that have not been dealt with at this point. There is not much information readily available regarding patched security vulnerabilities, at least through the typical avenue of public Github issues.
 
 ## Individual Reflections
