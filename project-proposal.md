@@ -1,19 +1,14 @@
 # CYBR8420-Team5-Project
 
 ## The Software
-The software chosen for this project is the Ladybird browser. The project website is located at [ladybird.org](https://ladybird.org/) and the code is located in  [this Github repository](https://github.com/LadybirdBrowser/ladybird).
+The software chosen for this project is the Ladybird browser. The project website is located at [ladybird.org](https://ladybird.org/) and the code is located in [Github](https://github.com/LadybirdBrowser/ladybird). The specific isolation issue that we are considering contributing to is [302](https://github.com/LadybirdBrowser/ladybird/issues/302).
 
 ## Operational Environment
-Link to open source project: https://github.com/LadybirdBrowser/ladybird
-
-The specific isolatio issue that we are considering contributing to is:
- https://github.com/LadybirdBrowser/ladybird/issues/302
-
 The inferred operational environment for using the LadyBird browser would either be home or school. 
 There would be limited use of a browser such as LabyBird in professional or government environments due to 
 the use of predominant browsers such as Google Chrome and Microsoft Edge due to the wide adoption and reliability of these browsers within these environments.
 
-In terms of the systems engineering view, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
+In the hypothetical environmental system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
 
 Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. The other systems could be the various websites that the browser will visit, both safe and malicious.
 
@@ -65,5 +60,3 @@ I learned about the threats users face in browsers, especially cross-site script
 I learned about different aspects of an open-source project to evaluate when looking to contribute. I have not previously contributed to any "real" open-source projects (ones with governance structures, detailed contribution guidelines, etc.), so I was not aware of these systems and procedures. I did have a rough idea of the process structure of a browser (e.g. separate processes for different sites and the different components within each tab), but I was not aware of some of the finer details. Ladybird has _everything_ separated out, down to things like image decoders being isolated to their own process that can only communicate in terms of the image data. This architecture shows how security-minded the project is, yet there's still plenty of holes that they acknowledge, showing just how much continued effort has to go in to security for projects as large and complex as a browser.
 
 This assignment was eye-opening predominantly surrounding how much open-source software there is. I also had to learn how to explore security related topics on a project with little information on how the software even functions as a whole, which was difficult, but in the case of the ladybird browser, the issue sorting in github pointed me in a better direction. Creating the diagram was also insightful because I had to learn how a web-browser works down to its foundation and will need to do a lot more learning to get the best understanding I can about ladybird. 
-
-This assignment was a great start to the overall project and showed me how many security threats and mitigations have to be realized and made for browsers. This not only helped me understand the LadyBird project but also about the general security concerns of modern browsers. This assignment also lays a good foundation for branching out and researching other open source projects and their various vulnerabilities.
