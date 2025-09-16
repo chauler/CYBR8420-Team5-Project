@@ -19,7 +19,7 @@ Enabling systems for the browser would be the computer operating system, compile
 
 Existing security features include the use of separate processes for each tab, including separate renderers and Frame objects for individual pages and iframes. The software also features a JavaScript engine without compilation
 
-The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks. Potential attacks are not limited to cross-site scripting - websites are another medium of input to the browser which interacts through HTML and JavaScript. Another threat perceived by users could be, for example, remote code execution achieved via exploiting the JavaScript engine.
+The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks. Potential attacks are not limited to cross-site scripting - websites are another medium of input to the browser which interacts through HTML and JavaScript. Another threat perceived by users could be, for example, remote code execution from a malicious website exploiting the JavaScript engine.
 
 Site Isolation would limit the blast radius of an attack by a malicious site. If you visited a malicious website, the site isolation inside of the browser would limit the attack to only the single tab. It would not allow the malicious website to see data that was exposed in the other browser tabs.
 
