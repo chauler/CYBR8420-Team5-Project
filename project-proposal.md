@@ -1,27 +1,22 @@
 # CYBR8420-Team5-Project
 
 ## The Software
-The software chosen for this project is the Ladybird browser, located at [this website](https://ladybird.org/) and [this Github repository](https://github.com/LadybirdBrowser/ladybird).
+The software chosen for this project is the Ladybird browser. The project website is located at [ladybird.org](https://ladybird.org/) and the code is located in [Github](https://github.com/LadybirdBrowser/ladybird). The specific isolation issue that we are considering contributing to is [302](https://github.com/LadybirdBrowser/ladybird/issues/302).
 
 ## Operational Environment
-Link to open source project: https://github.com/LadybirdBrowser/ladybird
-
-The specific isolatio issue that we are considering contributing to is:
- https://github.com/LadybirdBrowser/ladybird/issues/302
-
 The inferred operational environment for using the LadyBird browser would either be home or school. 
 There would be limited use of a browser such as LabyBird in professional or government environments due to 
 the use of predominant browsers such as Google Chrome and Microsoft Edge due to the wide adoption and reliability of these browsers within these environments.
 
-In terms of the hypothetical enviornment systerm diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
+In the hypothetical environmental system diagram, the system of interest would be the LadyBird browser. The system elements of a typical browser include: User Interface, Browser Engine, Rendering Engine, JavaScript Engine, Networking Module, Data Storage, and Security Module. These elements were pulled from initial research on the common components of browsers and a good reference could be: https://educatecomputer.com/what-is-a-web-browser/ . 
 
 Enabling systems for the browser would be the computer operating system, compilers, network infrastructure, certificate authorities. The other systems could be the various websites that the browser will visit, both safe and malicious.
 
 Existing security features include the use of separate processes for each tab, including separate renderers and Frame objects for individual pages and iframes. The software also features a JavaScript engine without compilation
 
-The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks.
+The threats that are perceived by the user are malicious websites with Cross Site Scripting attacks. Potential attacks are not limited to cross-site scripting - websites are another medium of input to the browser which interacts through HTML and JavaScript. Another threat perceived by users could be, for example, remote code execution from a malicious website exploiting the JavaScript engine.
 
-Site Isolation would limit the blast radius of a Cross Site Scripting attack. If you visited a malicious website, the site isolation inside of the browser would limit the attack to only the singe tab. It would not allow the malicious website to see data that was exposed in the other browser tabs.
+Site Isolation would limit the blast radius of an attack by a malicious site. If you visited a malicious website, the site isolation inside of the browser would limit the attack to only the single tab. It would not allow the malicious website to see data that was exposed in the other browser tabs.
 
 ## Motivation
 Our motivation for selecting this project was the large scope and heavy use of internal code giving lots of potential for security contribution. The many types of input (user interaction, IPC, HTML pages, other network communications) provide many potential attack vectors. Also, the large number of contributors and pull requests show a project that is built for outside contribution.
@@ -58,10 +53,4 @@ There is not much information readily available regarding patched security vulne
 
 
 ## Individual Reflections
-From this assignment, I learned more about the details and makeup of a web browser. I use a web browser daily, but I rarely think about components and the details of how the browser works. In order to build out the system engineering view, I needed to know the components and architecture of a web browser. Having a good understanding of how the software package works helps identify misuse cases and potential software assurance improvements. The examples of system engineering views from previous years from past projects were helpful to make sure we were including the correct level of detail in our system engineering view.
-
-I learned about the threats users face in browsers, especially cross-site scripting and the importance of site isolation. Seeing how Ladybird is approaching these challenges gave me a better appreciation for how security evolves in new software and how governance decisions, like adopting Swift for memory safety, influence its future direction. I also found it valuable to explore Open Hub analytics, where metrics such as lines of code, contributor activity, and the security confidence index helped me connect the project’s scale to its maturity and risks. Using these external tools provided quantitative insights into code quality and security posture, complementing the qualitative research and making the overall analysis more comprehensive.
-
-I learned about different aspects of an open-source project to evaluate when looking to contribute. I have not previously contributed to any "real" open-source projects (ones with governance structures, detailed contribution guidelines, etc.), so I was not aware of these systems and procedures. I did have a rough idea of the process structure of a browser (e.g. separate processes for different sites and the different components within each tab), but I was not aware of some of the finer details. Ladybird has _everything_ separated out, down to things like image decoders being isolated to their own process that can only communicate in terms of the image data. This architecture shows how security-minded the project is, yet there's still plenty of holes that they acknowledge, showing just how much continued effort has to go in to security for projects as large and complex as a browser.
-
-This assignment was eye-opening predominantly surrounding how much open-source software there is. I also had to learn how to explore security related topics on a project with little information on how the software even functions as a whole, which was difficult, but in the case of the ladybird browser, the issue sorting in github pointed me in a better direction. Creating the diagram was also insightful because I had to learn how a web-browser works down to its foundation and will need to do a lot more learning to get the best understanding I can about ladybird. 
+From this assignment, we gained a deeper understanding of the components and architecture of a web browser, which I had never considered in detail despite using one daily. Building the system engineering view helped me appreciate how browser architecture supports identifying misuse cases and software assurance improvements, and past project examples guided me in including the right level of detail. I also learned about key security threats such as cross-site scripting and the importance of site isolation, while Ladybird’s adoption of Swift for memory safety showed how governance decisions influence security direction. Exploring Open Hub analytics provided quantitative insights into code quality and maturity, complementing qualitative research. Additionally, I discovered how open-source projects are structured with governance and contribution guidelines, and I was impressed by Ladybird’s separation of processes—even down to image decoders—highlighting its security focus, though gaps remain. The project exposed me to the scale of open-source software and the difficulty of analyzing security with limited functional information, where issue sorting on GitHub became helpful. Creating diagrams forced me to break down a browser’s foundation, while researching threats and mitigations emphasized the complexity of browser security. Overall, the assignment was eye-opening, showing me both the depth of technical details in browsers and the breadth of security challenges and governance practices in open-source projects, while also laying a strong foundation for evaluating other projects in the future.
