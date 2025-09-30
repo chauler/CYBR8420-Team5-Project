@@ -94,6 +94,15 @@ I found this assignment to be useful for getting me in the right mindset for use
 
 ---
 
+## Part 2:
+Security is discussed at a high level [here](https://github.com/LadybirdBrowser/ladybird/security). It addresses the project's mindset regarding security during development and the disclosure and handling of security vulnerabilities. The document points to security being a serious consideration, but not a top priority, when developing new features. This is a mindset that is due to change at some point, though, as the reasoning given for it is the project's current stage of very early development. This document also seems to be out of date. For example, there is a list of items deemed "out of scope"; this list includes "Content Security Policy", though that has been implemented. This was likely moved to "in-scope" when the browser started targeting web standards tests that almost certainly include Content Security Policy testing.
+
+This is not specifically security-related communications, but I also found a monthly update for the project that often covers security improvements and the security implications of implemented features. One example slide from the July update:
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a5fc61a9-b486-49fc-a42b-eea0b0f855ee" />
+
+
+---
+
 ## Jason Use Case: Navigate to Url
 ![Navigate to URL Use Case](docs/UseCase_Navigate_to_URL.svg)
 =======
