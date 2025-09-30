@@ -35,6 +35,16 @@ The following prompt was provided to ChatGPT to help iterate the misuse case dev
 """
 >
 >
+##### Part 2
+### Summary:
+Ladybird’s documentation highlights modern TLS and ongoing certificate validation work, but it lacks depth on security-related configuration and installation. Important protections like DNSSEC validation, HSTS/HTTPS-Only enforcement, certificate transparency, and mixed content handling are either incomplete or undocumented. Strengthening security documentation would give contributors and users better visibility into the project’s security posture.
+
+## Key Points:
+- Modern TLS and HTTPS supported
+- Certificate validation improvements in progress
+- Missing: DNSSEC validation, certificate transparency, revocation checks
+- Unclear: HSTS/HTTPS-Only mode, mixed content handling
+- Improvement: Add explicit TLS feature docs, security roadmap to SECURITY.md
 =======
 
 ![Navigate to URL Use Case](docs/UseCase_File_Download.png)
