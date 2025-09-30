@@ -2,6 +2,29 @@
 
 ![Navigate to URL Use Case](docs/Secure%20web%20connection.png)
 
+===
+### Secure Web Connection Security Requirements
+- Strict Certificate Validation → prevents Rogue Certificate Attack
+- Mutual TLS Authentication → strengthens identity checks against MITM Attack
+- Encrypt Authentication Data → protects confidentiality from MITM Attack
+- DNSSEC Validation → prevents DNS Spoof Attacks
+- HSTS / HTTPS-Only Enforcement → ensures connections are always encrypted
+
+---
+### Reflection
+The Secure Web Connection misuse case analysis emphasized the importance of protections such as strict certificate validation, DNSSEC, HSTS, and mutual TLS in defending against MITM, rogue certificate, and DNS spoofing attacks. Mapping these threats directly to countermeasures clarified how individual mechanisms contribute to overall browser security. Reviewing Ladybird’s current state also highlighted that while the architecture supports strong isolation and TLS handling, several of these requirements are not yet fully documented or implemented, leaving a gap between expected and actual security capabilities.
+
+### AI Prompt
+You are an expert software security requirement engineer.
+Your job is to suggest misuse cases for a particular description of a use case diagram.
+Misuse cases need to be introduced in stages as back-and-forth analysis by introducing security countermeasures in response to a misuse case.
+Use this text description of a use case for the analysis.
+"""
+An Actor is associated with the "Secure Web Connection" use case.
+The "Secure Web Connection" use case has dependencies with "Mutual TLS Authentication," "Encrypt Authentication Data," and "DNSSEC Validation" use cases.
+Identified misuse cases include "MITM Attack," "Rogue Certificate Attack," and "DNS Spoof Attack." Each misuse case should map to a corresponding countermeasure (e.g., Strict Certificate Validation, HSTS/HTTPS-Only Enforcement, DNSSEC/DoH).
+"""
+
 ![Navigate to URL Use Case](docs/UseCase_File_Download.png)
 
 ![Navigate to URL Use Case](docs/PopUp_Blocking.jpg)
