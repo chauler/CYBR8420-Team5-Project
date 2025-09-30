@@ -83,6 +83,7 @@ Supports Content Security Policy, supports script-src, script-src-elem, and scri
 
 I am investigating whether password inputs are obscured. I did not find any obvious references to this behavior within the HTMLInputElement.cpp file, but I will build Ladybird locally and experiment myself.
 
+## Jason Use Case: Navigate to Url
 ![Navigate to URL Use Case](docs/UseCase_Navigate_to_URL.svg)
 =======
 ### Navigate to URL Security Requirements
@@ -96,6 +97,8 @@ Security Requirements derived from the Navigate to URL use case and misuse cases
 - Block Automatic Downloads
 
 ---
+## Reflection: 
+I reviewed the Ladybird browser GitHub project documentation and discussion in the project’s Discord channel to determine the current state of security-related information within the project. The existing project documentation does not feature a dedicated thread or section specifically focused on security topics. This indicates that currently security is not addressed as a standalone subject within the available documentation. Much of the Ladybird browser documentation is aimed at attracting and assisting new contributors. The materials primarily cover coding style guidelines and detailed build instructions, rather than addressing security concerns or practices.
 
 ## Project board:
 [Link](https://github.com/users/chauler/projects/3)
