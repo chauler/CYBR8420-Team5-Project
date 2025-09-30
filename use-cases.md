@@ -70,8 +70,10 @@ Reflection: I learned a lot about how versatile the browser is and that there ar
 It looks to me like there is potential to do some more work as far as validating downloads by providing warnings when a file comes from an untrusted source, and some kind of log that saves when a download was made and what was downloaded would also be beneficial. Antivirus scanning of files could also be done but I think that might be more advanced than we want to work. 
 
 
-![Navigate to URL Use Case](docs/PopUp_Blocking.jpg)
+![Pupup Blocking Use Case](docs/PopUp_Blocking.jpg)
 
+
+## Alex Use Case: Password Input
 ![Password Input Misuse Case](docs/Password_Input_Misuse_Case.drawio.png)
 Security requirements:
  - Hide the text inside Input elements of type `Password` by default.
@@ -82,6 +84,15 @@ Implemented security features:
 Supports Content Security Policy, supports script-src, script-src-elem, and script-src-attr. Supports using nonce values for use with dynamic, inline scripts. Ladybird seems to have the security requirements derived from this diagram implemented fully. When inspecting the code, I found comments specifying the W3C standard number for whatever was being implemented in that block, so it seems to be a thorough implementation that goes through the standard for all of these items.
 
 I am investigating whether password inputs are obscured. I did not find any obvious references to this behavior within the HTMLInputElement.cpp file, but I will build Ladybird locally and experiment myself.
+
+---
+
+## Reflection:
+
+Alex's reflection:
+I found this assignment to be useful for getting me in the right mindset for useful security analysis. I started this class thinking "buffer overflows" and "modifying memory" - rarer and relatively difficult types of attacks. Trying to come up with good use/misuse cases helped me to remember the small security features we usually don't think of - in this case, it was obscuring password inputs. Starting from that foundation, I was more easily able to build out a diagram of more realistic threats.
+
+---
 
 ## Jason Use Case: Navigate to Url
 ![Navigate to URL Use Case](docs/UseCase_Navigate_to_URL.svg)
@@ -99,17 +110,6 @@ Security Requirements derived from the Navigate to URL use case and misuse cases
 ---
 ## Reflection: 
 I reviewed the Ladybird browser GitHub project documentation and discussion in the project’s Discord channel to determine the current state of security-related information within the project. The existing project documentation does not feature a dedicated thread or section specifically focused on security topics. This indicates that currently security is not addressed as a standalone subject within the available documentation. Much of the Ladybird browser documentation is aimed at attracting and assisting new contributors. The materials primarily cover coding style guidelines and detailed build instructions, rather than addressing security concerns or practices.
-
-## Project board:
-[Link](https://github.com/users/chauler/projects/3)
-
-
----
-
-## Reflection:
-
-Alex's reflection:
-I found this assignment to be useful for getting me in the right mindset for useful security analysis. I started this class thinking "buffer overflows" and "modifying memory" - rarer and relatively difficult types of attacks. Trying to come up with good use/misuse cases helped me to remember the small security features we usually don't think of - in this case, it was obscuring password inputs. Starting from that foundation, I was more easily able to build out a diagram of more realistic threats.
 
 ---
 
@@ -134,5 +134,8 @@ One security countermeasure has been identified for each of the three misuse cas
 >Goal number 1: Critique the existing use cases and misuse cases. Am I on the right path? 
 >
 >Goal number 2: Iterate additional use case and misuse cases to expand on the existing use cases
-  
-## Part 2:
+
+---
+
+## Project board:
+[Link](https://github.com/users/chauler/projects/3)
