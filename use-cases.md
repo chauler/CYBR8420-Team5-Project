@@ -1,9 +1,9 @@
 # Use Cases
 
-#### Arun Use Case: 
+## Arun Use Case: Secure Web Connection
 ![Navigate to URL Use Case](docs/Secure%20web%20connection.png)
 =======
-### Secure Web Connection Security Requirements
+### Security Requirements:
 - Strict Certificate Validation → prevents Rogue Certificate Attack
 - Mutual TLS Authentication → strengthens identity checks against MITM Attack
 - Encrypt Authentication Data → protects confidentiality from MITM Attack
@@ -11,7 +11,7 @@
 - HSTS / HTTPS-Only Enforcement → ensures connections are always encrypted
 ---
 
-### Reflection
+### Reflection:
 The Secure Web Connection misuse case analysis emphasized the importance of protections such as strict certificate validation, DNSSEC, HSTS, and mutual TLS in defending against MITM, rogue certificate, and DNS spoofing attacks. Mapping these threats directly to countermeasures clarified how individual mechanisms contribute to overall browser security. Reviewing Ladybird’s current state also highlighted that while the architecture supports strong isolation and TLS handling, several of these requirements are not yet fully documented or implemented, leaving a gap between expected and actual security capabilities.
 
 ### AI Prompt
@@ -26,16 +26,16 @@ The following prompt was provided to ChatGPT to help iterate the misuse case dev
 >
 >Use this text description of a use case for the analysis.
 >
-"""
+>"""
 >
 >An Actor is associated with the "Secure Web Connection" use case.
 >The "Secure Web Connection" use case has dependencies with "Mutual TLS Authentication," "Encrypt Authentication Data," and "DNSSEC Validation" use cases.
 >Identified misuse cases include "MITM Attack," "Rogue Certificate Attack," and "DNS Spoof Attack." Each misuse case should map to a corresponding countermeasure (e.g., Strict Certificate Validation, HSTS/HTTPS-Only Enforcement, DNSSEC/DoH).
 >
-"""
+>"""
 >
 >
-##### Part 2
+## Part 2:
 ### Summary:
 Ladybird’s documentation highlights modern TLS and ongoing certificate validation work, but it lacks depth on security-related configuration and installation. Important protections like DNSSEC validation, HSTS/HTTPS-Only enforcement, certificate transparency, and mixed content handling are either incomplete or undocumented. Strengthening security documentation would give contributors and users better visibility into the project’s security posture.
 
@@ -45,6 +45,7 @@ Ladybird’s documentation highlights modern TLS and ongoing certificate validat
 - Missing: DNSSEC validation, certificate transparency, revocation checks
 - Unclear: HSTS/HTTPS-Only mode, mixed content handling
 - Improvement: Add explicit TLS feature docs, security roadmap to SECURITY.md
+
 =======
 
 ![Navigate to URL Use Case](docs/UseCase_File_Download.png)
