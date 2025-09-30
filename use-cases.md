@@ -45,7 +45,8 @@ Ladybird’s documentation highlights modern TLS and ongoing certificate validat
 - Missing: DNSSEC validation, certificate transparency, revocation checks
 - Unclear: HSTS/HTTPS-Only mode, mixed content handling
 - Improvement: Add explicit TLS feature docs, security roadmap to SECURITY.md
-=======
+
+---
 
 ![Navigate to URL Use Case](docs/UseCase_File_Download.png)
 
