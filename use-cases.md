@@ -48,7 +48,27 @@ Ladybird’s documentation highlights modern TLS and ongoing certificate validat
 
 ---
 
+
+
+## Logan Use Case: File Downloading
 ![Navigate to URL Use Case](docs/UseCase_File_Download.png)
+=======
+### Security Requirements:
+- Display Full Filename → mitigates File Name/Extension Spoofing
+- Validate Download Source → prevents Download Redirect/Drive-by Download
+- Download Confirmation Popup → prevents Drive-by Download
+- Scan File for Virus → prevents Malware Executed on Browser User's Machine
+- Sandboxing & Supported Schemes → mitigates automatic downloads and redirects
+
+### Implemented security features:
+Display full filename on download (UI/Qt/Application.cpp), validate dowload source (link trustworthiness check, Meta/gn/build/download_file.py), download confirmation popup (UI/Qt/Application.cpp) are all implemented within the browser. Could use a virus scanner but the existing security implementations are strong regardless. There is a file integrity check based on sha256 signature and also a sandboxing environment allowed for downloads.
+
+Reflection: I learned a lot about how versatile the browser is and that there are likely quite a few features in the mainstream browsers that promote security that I am unaware of. The sandboxing environment was very interesting to learn about in particular as I've learned in my professional work that it can have a lot of really interesting usecases. The diagramming was particularly difficult to learn for me because visually explaining how a technology interaction works is not very straightforward buit was a good skill to practice. 
+
+## Part 2:
+### Summary:
+It looks to me like there is potential to do some more work as far as validating downloads by providing warnings when a file comes from an untrusted source, and some kind of log that saves when a download was made and what was downloaded would also be beneficial. Antivirus scanning of files could also be done but I think that might be more advanced than we want to work. 
+
 
 ![Navigate to URL Use Case](docs/PopUp_Blocking.jpg)
 
