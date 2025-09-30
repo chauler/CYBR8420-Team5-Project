@@ -69,9 +69,6 @@ Reflection: I learned a lot about how versatile the browser is and that there ar
 ### Summary:
 It looks to me like there is potential to do some more work as far as validating downloads by providing warnings when a file comes from an untrusted source, and some kind of log that saves when a download was made and what was downloaded would also be beneficial. Antivirus scanning of files could also be done but I think that might be more advanced than we want to work. 
 
-
-![Navigate to URL Use Case](docs/PopUp_Blocking.jpg)
-
 ![Password Input Misuse Case](docs/Password_Input_Misuse_Case.drawio.png)
 Security requirements:
  - Hide the text inside Input elements of type `Password` by default.
@@ -133,3 +130,40 @@ One security countermeasure has been identified for each of the three misuse cas
 >Goal number 2: Iterate additional use case and misuse cases to expand on the existing use cases
   
 ## Part 2:
+
+
+## Godwin Use Case: Blocking Pop Ups
+![Navigate to URL Use Case](docs/PopUp_Blocking.jpg)
+=======
+### Security Requirements:
+- User-gesture–gated pop-ups → prevents unsolicited pop-ups that can lead to phishing pop-ups and malicious redirects.
+- Block cross-origin popup redirection by default → prevents malicious redirect.
+- Disallow downloads from popup context → prevents drive-by downloads
+---
+
+### Reflection:
+Reviewing the Pop up misue case, the mitigation/defense chain is straight forward within ladybird. The permission option/prompt is the central control for this use case and extends to three mitgation being disallowing downloads, blocking cross-origin redirection, and restricting window.open(). This exercise exposed to me to some of the basic functionality that browsers provide have much deeper security implementations and extensions.
+
+
+### AI Prompt Development
+The following prompt was provided to ChatGPT to help iterate the misuse case development:
+
+>You are an expert software security requirement engineer. Your job is to critique and improve on the existing misuse cases and to suggest additional misuse cases for a particular description of a use case diagram. 
+>
+>Mis use cases need to be introduced in stages as back and forth analysis by introducing security countermeasures in response to a mis use case. 
+>
+>We are building a misuse case diagram for an open sourced web browser. Use this text description of a use case for the analysis. 
+>
+>""" 
+>
+>A User is associated with the "Block Pop Ups" use case. The "Block Pop Ups". This use case will be extended from a central control of a permission prompt.
+>
+>""" 
+>
+>
+>Goal number 1: Iterate additional use case and misuse cases to expand on the existing use cases
+
+
+## Part 2:
+### Summary:
+Ladybird’s documentation included many security features, though blocking pop ups is not a main focus it is still an option provided to users that has many implied security extensions. There is a need for more documentation here and also testing of what exactly ladybird controls in terms of blocking pop ups and the criticality it deeems on the security within pop up blocking. Overall, there is basic mitigation protocols but not a robust system dedicated to popular attack within browser pop ups. 
