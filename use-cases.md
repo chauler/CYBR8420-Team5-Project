@@ -174,8 +174,6 @@ The following prompt was provided to ChatGPT to help iterate the misuse case dev
 ## Part 2:
 ## Summary:
 Ladybird’s documentation included many security features, though blocking pop ups is not a main focus it is still an option provided to users that has many implied security extensions. There is a need for more documentation here and also testing of what exactly ladybird controls in terms of blocking pop ups and the criticality it deeems on the security within pop up blocking. Overall, there is basic mitigation protocols but not a robust system dedicated to popular attack within browser pop ups. 
-=======
-
 ---
 
 ## Project board:
