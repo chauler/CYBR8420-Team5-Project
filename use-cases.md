@@ -35,19 +35,8 @@ The following prompt was provided to ChatGPT to help iterate the misuse case dev
 >"""
 >
 >
-## Part 2:
-### Summary:
-Ladybird’s documentation highlights modern TLS and ongoing certificate validation work, but it lacks depth on security-related configuration and installation. Important protections like DNSSEC validation, HSTS/HTTPS-Only enforcement, certificate transparency, and mixed content handling are either incomplete or undocumented. Strengthening security documentation would give contributors and users better visibility into the project’s security posture.
-
-## Key Points:
-- Modern TLS and HTTPS supported
-- Certificate validation improvements in progress
-- Missing: DNSSEC validation, certificate transparency, revocation checks
-- Unclear: HSTS/HTTPS-Only mode, mixed content handling
-- Improvement: Add explicit TLS feature docs, security roadmap to SECURITY.md
 
 ---
-
 
 
 ## Logan Use Case: File Downloading
@@ -66,9 +55,6 @@ Display full filename on download (UI/Qt/Application.cpp), validate dowload sour
 ### Reflection:
 I learned a lot about how versatile the browser is and that there are likely quite a few features in the mainstream browsers that promote security that I am unaware of. The sandboxing environment was very interesting to learn about in particular as I've learned in my professional work that it can have a lot of really interesting usecases. The diagramming was particularly difficult to learn for me because visually explaining how a technology interaction works is not very straightforward buit was a good skill to practice. 
 
-## Part 2:
-### Summary:
-It looks to me like there is potential to do some more work as far as validating downloads by providing warnings when a file comes from an untrusted source, and some kind of log that saves when a download was made and what was downloaded would also be beneficial. Antivirus scanning of files could also be done but I think that might be more advanced than we want to work. 
 
 ---
 
@@ -89,12 +75,6 @@ I could not find this behavior in the codebase, but after compiling and running 
 
 ### Reflection:
 I found this assignment to be useful for getting me in the right mindset for useful security analysis. I started this class thinking "buffer overflows" and "modifying memory" - rarer and relatively difficult types of attacks. Trying to come up with good use/misuse cases helped me to remember the small security features we usually don't think of - in this case, it was obscuring password inputs. Starting from that foundation, I was more easily able to build out a diagram of more realistic threats.
-
-## Part 2:
-Security is discussed at a high level [here](https://github.com/LadybirdBrowser/ladybird/security). It addresses the project's mindset regarding security during development and the disclosure and handling of security vulnerabilities. The document points to security being a serious consideration, but not a top priority, when developing new features. This is a mindset that is due to change at some point, though, as the reasoning given for it is the project's current stage of very early development. This document also seems to be out of date. For example, there is a list of items deemed "out of scope"; this list includes "Content Security Policy", though that has been implemented. This was likely moved to "in-scope" when the browser started targeting web standards tests that almost certainly include Content Security Policy testing.
-
-This is not specifically security-related communications, but I also found a monthly update for the project that often covers security improvements and the security implications of implemented features. One example slide from the July update:
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a5fc61a9-b486-49fc-a42b-eea0b0f855ee" />
 
 
 ---
@@ -173,8 +153,10 @@ The following prompt was provided to ChatGPT to help iterate the misuse case dev
 
 
 ## Part 2:
-## Summary:
-Ladybird’s documentation included many security features, though blocking pop ups is not a main focus it is still an option provided to users that has many implied security extensions. There is a need for more documentation here and also testing of what exactly ladybird controls in terms of blocking pop ups and the criticality it deeems on the security within pop up blocking. Overall, there is basic mitigation protocols but not a robust system dedicated to popular attack within browser pop ups. 
+
+## OSS Analysis Takeaways:
+The Ladybird project documentation reflects a commitment to modern security practices, and based on some of their monthly postings and general documentation, it's clear that there are steps being taken to further improve browser security. Through our individual research, our team identified some key shortcomings that we could use our skills to help mitigate. For starters, there is a lack of detailed guidance on configuring security-related options, such as enabling HTTPS-only mode or handling mixed content, which are crucial for protecting users from common web threats. Download validation features could be enhanced with more warnings of malicious downloads and better logging of download history, as well as better documentation on the uses of sandboxing for isolating downloaded content. Password and script handling have a strong start with masking passwords and enforcing content security policy, but the documentation lacks in descriptions for configuration and limitation. Popup blocking suffers a similar fate, where there are basic protocols that midigate browser pop up attacks, but lack of documentation of what that entails. The clear shortcoming of this project actually is the documentation of what security features exist. This is certainly somewhere we can contribute, but as listed here we have some technical pieces that would also be beneficial to the browser's security overall. Overall, we see in this project a weakness in that even with good intentions for security, there is a lack of proper documentation that makes meaningful contributions for individuals unfamiliar with the project rather difficult, but we see a path forward for how we can improve the browser as a whole. 
+
 
 ## Project board:
 [Link](https://github.com/users/chauler/projects/3)
