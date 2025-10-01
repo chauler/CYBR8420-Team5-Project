@@ -139,6 +139,8 @@ One security countermeasure has been identified for each of the three misuse cas
 >
 >Goal number 2: Iterate additional use case and misuse cases to expand on the existing use cases
 
+---
+
 ## Godwin Use Case: Blocking Pop Ups
 ![Navigate to URL Use Case](docs/PopUp_Blocking.jpg)
 ### Security Requirements:
