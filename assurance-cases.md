@@ -10,6 +10,7 @@
 ## Top Claim #3 (Arun) - 
 
 ## Top Claim #4 (Alex) - 
+![Protect User Inputs Assurance Case](docs/Protect_User_Inputs_Assurance_Case.svg)
 
 ## Top Claim #5 (Godwin) - 
 
