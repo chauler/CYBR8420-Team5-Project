@@ -12,6 +12,7 @@
 ## Top Claim #4 (Alex) - 
 
 ## Top Claim #5 (Godwin) - 
+![Seperates Networking from Page Execution Assurance Case](docs/Assurance_Claim_Netoworking.jpg)
 
 
 <hr style="border-top: 6px dotted white;">
