@@ -11,6 +11,16 @@
 ## Top Claim #3 (Arun) - Browser ensures secure web connection
 ![Secure web connection Assurance Case](docs/Secure%20Web%20Connection-%20Assurance%20Case.svg)
 
+**Part2**
+For the Secure Web Communication assurance case, most identified evidence—like TLS validation, certificate verification, and HTTPS enforcement—partially aligns with the current Ladybird Browser security framework.
+
+- Available Evidence: Strong TLS integration and certificate verification     align with E1 (TLS Interoperability Scan Report) and E2 (Certificate Validation Tests).
+
+- Needs Improvement: DNSSEC validation, HSTS enforcement, and certificate transparency are not fully implemented or documented, requiring additional effort to satisfy E3 and E4.
+
+- Gap Summary: Core cryptographic protections exist, but user-facing validation and supporting documentation still need enhancement.
+
+
 
 ## Top Claim #4 (Alex) - 
 
@@ -50,3 +60,5 @@ From the File Download assurance case, there is evidence of filename prompting b
 
 ## Reflection
 Logan: This assignment was particularly interesting for getting in the mindset of continually asking questions to probe how well the security questions are being answered. The rebuttal-subclaim cycle was particularly interesting, and seeing how my group members went about the process was insightful to see just how well the tactic can be leveraged. 
+
+Arun: Working on the Secure Web Connection assurance case helped me bridge theoretical assurance modeling with practical browser security design. I learned how structured claims, rebuttals, and evidence can systematically build trust in mechanisms like TLS enforcement and certificate validation. The most valuable part was identifying evidence gaps, which showed how assurance cases complement software testing and documentation. This exercise also deepened my understanding of how open-source projects validate and communicate their security posture.
