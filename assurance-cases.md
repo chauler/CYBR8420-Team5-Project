@@ -6,12 +6,15 @@
 
 
 ## Top Claim #2 (Logan) - 
+![File Download Protection Assurance Case](docs/Filedownload_Assurance_Case.svg)
 
-## Top Claim #3 (Arun) - 
+## Top Claim #3 (Arun) - Browser ensures secure web connection
+![Secure web connection Assurance Case](docs/Secure%20Web%20Connection-%20Assurance%20Case.svg)
+
 
 ## Top Claim #4 (Alex) - 
 
-## Top Claim #5 (Godwin) - 
+## Top Claim #5 (Godwin) - Browser seperates networking from page execution
 ![Seperates Networking from Page Execution Assurance Case](docs/Assurance_Claim_Netoworking.jpg)
 
 
@@ -41,4 +44,9 @@ The following AI prompt was used to refine and improve assurance claim for prote
 
 <hr style="border-top: 6px dotted white;">
 
-## Discussion
+## Part 2
+
+From the File Download assurance case, there is evidence of filename prompting before downloading, but there is not a proactive threat intelligence service to highlight any URLs that should be blocked. This is a gap that could be remediated by having a way to import a third party intelligence list or even having an automatically updating threat list based on community additions. 
+
+## Reflection
+Logan: This assignment was particularly interesting for getting in the mindset of continually asking questions to probe how well the security questions are being answered. The rebuttal-subclaim cycle was particularly interesting, and seeing how my group members went about the process was insightful to see just how well the tactic can be leveraged. 
