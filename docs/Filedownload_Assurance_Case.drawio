@@ -81,7 +81,7 @@
             <mxPoint x="504.5" y="210" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="bk2-0UrnXQY0JZ6oVw0t-8" value="&lt;b&gt;Sub-Claim C3:&lt;/b&gt;&amp;nbsp;The browser assesses the trustworthiness of the final download source before initiating the file transfer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="bk2-0UrnXQY0JZ6oVw0t-8" value="&lt;b&gt;Sub-Claim C3:&lt;/b&gt;&amp;nbsp;The browser assesses the trustworthiness of the final download source" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="414.54" y="270" width="181.18" height="60" as="geometry" />
         </mxCell>
         <mxCell id="bk2-0UrnXQY0JZ6oVw0t-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="bk2-0UrnXQY0JZ6oVw0t-10" target="bk2-0UrnXQY0JZ6oVw0t-11">
