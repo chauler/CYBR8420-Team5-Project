@@ -7,7 +7,8 @@
 
 ## Top Claim #2 (Logan) - 
 
-## Top Claim #3 (Arun) - 
+## Top Claim #3 (Arun) - Browser ensures secure web connection
+![Secure web connection Assurance Case](docs/Secure%20Web%20Connection-%20Assurance%20Case.svg)
 
 ## Top Claim #4 (Alex) - 
 
@@ -41,5 +42,3 @@ The following AI prompt was used to refine and improve assurance claim for prote
 <hr style="border-top: 6px dotted white;">
 
 ## Discussion
-
-The ladybird browser open source project incldues [LibCrypto](https://github.com/LadybirdBrowser/ladybird/tree/master/Libraries/LibCrypto/Cipher). folder with code for AES encryption and decryption. This helps support the Browser protects user stored data sub-claim C2. The project also includes code that check for cross origin isolation in a [LibURL/Origin](https://github.com/LadybirdBrowser/ladybird/blob/master/Libraries/LibURL/Origin.h) class, which supports sub-claim C3. Addition analysis will need to be done to validate the details of how the code is implemented, but the inclusion of this code helps build our assurance cases. 
