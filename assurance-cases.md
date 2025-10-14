@@ -6,6 +6,7 @@
 
 
 ## Top Claim #2 (Logan) - 
+![File Download Protection Assurance Case](docs/Filedownload_Assurance_Case.png)
 
 ## Top Claim #3 (Arun) - 
 
