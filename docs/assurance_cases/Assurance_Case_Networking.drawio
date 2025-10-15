@@ -1,0 +1,253 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2" pages="2">
+  <diagram id="2RAkf9iS2bYrb-5zrusB" name="Page-1">
+    <mxGraphModel dx="1757" dy="1481" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-1" value="&lt;h1&gt;Assurance Case&lt;/h1&gt;&lt;p&gt;Assurance case diagram for the case browser&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;performs all network activity in a dedicated RequestServer process, isolating networking from renderers.&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-181" y="-140" width="190" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-2" target="EpLoNu7SxfJ4iQwhgqlz-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-2" target="EpLoNu7SxfJ4iQwhgqlz-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;curved=1;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-2" target="qtEXMe3NoPVdBR0kwuAK-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-2" value="&lt;b&gt;Top-Claim C1:&lt;br&gt;&lt;/b&gt;Browser separates networking from page execution&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="221" y="-135" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-3" value="&lt;b&gt;Context: CT1&lt;/b&gt;&lt;br&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Multi-process architecture with UI, WebContent (renderers), RequestServer, LookupServer&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;" parent="1" vertex="1">
+          <mxGeometry x="709" y="-125" width="185" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-5" target="EpLoNu7SxfJ4iQwhgqlz-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-5" value="&lt;b&gt;Rebuttal R1:&lt;/b&gt;&amp;nbsp;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Unless the inter-process communication surface is overly permissive&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="-96" y="129" width="174" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="84.5" y="552.875" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-8" value="&lt;b&gt;Sub-Claim C2:&lt;br&gt;&lt;/b&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Renderers have no socket access; all requests go over IPC to RequestServer&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="9.000000000000004" y="406" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-18" target="QZmJmSLNhmCas4r4OHEI-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-18" value="&lt;b&gt;Evidence E1&lt;/b&gt;:&lt;br&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Networking code paths run in RequestServer process&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="17.5" y="560" width="133" height="133" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-19" target="QZmJmSLNhmCas4r4OHEI-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-19" value="&lt;b&gt;Evidence E2:&lt;/b&gt;&lt;br&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;LookupServer performs DNS resolution&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="205.5" y="560" width="133" height="133" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-26" target="QZmJmSLNhmCas4r4OHEI-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-26" value="&lt;b&gt;Evidence E3:&lt;/b&gt;&lt;br&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Ladybird README/architecture describe RequestServer&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="474" y="560" width="133" height="133" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;curved=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-36" target="EpLoNu7SxfJ4iQwhgqlz-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;curved=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-36" target="qtEXMe3NoPVdBR0kwuAK-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;curved=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-36" target="qtEXMe3NoPVdBR0kwuAK-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-36" value="&lt;b&gt;Inference Rule IR1&lt;/b&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;: If networking is out-of-process via RequestServer with restricted IPC, then renderers are isolated from raw network I/O&lt;/span&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#A9C4EB;size=0.05555555555555555;" parent="1" vertex="1">
+          <mxGeometry x="306" y="130.5" width="200" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;curved=1;" edge="1" parent="1" source="qtEXMe3NoPVdBR0kwuAK-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="83.875" y="401.625" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-1" value="&lt;b&gt;Rebuttal R2:&lt;/b&gt;&amp;nbsp;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Unless a renderer can escape sandboxing to raw sockets&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="117" y="131" width="163.75" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-3" value="&lt;b&gt;Rebuttal R3:&lt;/b&gt;&amp;nbsp;&lt;span style=&quot;white-space-collapse: preserve; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Unless a RequestServer compromise can reach the UI process&lt;/span&gt;&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="577" y="139" width="183" height="71.5" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qtEXMe3NoPVdBR0kwuAK-4" target="EpLoNu7SxfJ4iQwhgqlz-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-4" value="&lt;b&gt;Sub-Claim C3:&lt;br&gt;&lt;/b&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;DNS resolution is not done by renderers&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="191" y="406" width="162" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-5" value="&lt;b&gt;Sub-Claim C4:&lt;br&gt;&lt;/b&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Centralized network policy &amp;amp; logging live in RequestServer&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="373" y="403" width="148" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-6" value="&lt;b&gt;Sub-Claim C5:&lt;br&gt;&lt;/b&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;HTTP/TLS is handled in RequestServer, not in renderers&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="546" y="404" width="135" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.417;entryY=0.083;entryDx=0;entryDy=0;entryPerimeter=0;curved=1;" parent="1" source="qtEXMe3NoPVdBR0kwuAK-5" target="EpLoNu7SxfJ4iQwhgqlz-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qtEXMe3NoPVdBR0kwuAK-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.417;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;curved=1;" parent="1" source="qtEXMe3NoPVdBR0kwuAK-6" target="EpLoNu7SxfJ4iQwhgqlz-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ITWrhdo6OUsu6000DLTt-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.911;entryY=0.042;entryDx=0;entryDy=0;entryPerimeter=0;curved=1;" edge="1" parent="1" source="qtEXMe3NoPVdBR0kwuAK-3" target="qtEXMe3NoPVdBR0kwuAK-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ITWrhdo6OUsu6000DLTt-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.388;entryY=-0.075;entryDx=0;entryDy=0;entryPerimeter=0;curved=1;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-36" target="qtEXMe3NoPVdBR0kwuAK-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QZmJmSLNhmCas4r4OHEI-1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="69" y="759" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QZmJmSLNhmCas4r4OHEI-2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="257" y="759" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QZmJmSLNhmCas4r4OHEI-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="525.5" y="759" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=78.5;entryDy=0;entryPerimeter=0;curved=1;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-2" target="EpLoNu7SxfJ4iQwhgqlz-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j-UCLrZCtqqWFj9X4Xex-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=73.375;entryDy=0;entryPerimeter=0;curved=1;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-2" target="qtEXMe3NoPVdBR0kwuAK-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Copy of Page-1" id="HlDqY2iwKWt4QDOlAZoP">
+    <mxGraphModel dx="706" dy="604" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-0" />
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-1" parent="QMgodMLKlRWmOpSdiSMq-0" />
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-2" value="&lt;h1&gt;Assurance Case&lt;/h1&gt;&lt;p&gt;This is an example diagram that will provide quick access to all elements necessary to create an assurance case.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="20" y="20" width="190" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-6" target="QMgodMLKlRWmOpSdiSMq-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;curved=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-6" target="QMgodMLKlRWmOpSdiSMq-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-6" target="QMgodMLKlRWmOpSdiSMq-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-6" value="&lt;b&gt;Top-Claim C1:&lt;br&gt;&lt;/b&gt;Tweety can fly" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="345" y="10" width="125" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-7" value="Context: CT1&lt;br&gt;Tweety is an animal" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="605" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-8" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-9" target="QMgodMLKlRWmOpSdiSMq-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-9" value="Rebuttal R1: Unless Tweety is not a bird" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="337.5" y="150" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-10" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-12" target="QMgodMLKlRWmOpSdiSMq-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-12" target="QMgodMLKlRWmOpSdiSMq-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-12" value="&lt;b&gt;Sub-Claim C2:&lt;br&gt;&lt;/b&gt;Tweety is a winged bird" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="340" y="250" width="135" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-13" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-14" target="QMgodMLKlRWmOpSdiSMq-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-14" value="Rebuttal R2: Unless Tweety is handicapped" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="255" y="360" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-15" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-16" target="QMgodMLKlRWmOpSdiSMq-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-16" value="Rebuttal R3: Unless Tweety is a Penguin" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="460" y="360" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.663;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-19" target="QMgodMLKlRWmOpSdiSMq-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-18" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-19" target="QMgodMLKlRWmOpSdiSMq-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-19" value="&lt;b&gt;Sub-Claim C3:&lt;br&gt;&lt;/b&gt;Tweety is physically able" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="235" y="480" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-20" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-21" target="QMgodMLKlRWmOpSdiSMq-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-21" value="&lt;b&gt;Sub-Claim C4:&lt;br&gt;&lt;/b&gt;Tweety is a member of a flying bird species" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="500" y="480" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-22" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-23" target="QMgodMLKlRWmOpSdiSMq-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-23" value="&lt;b&gt;Evidence E1&lt;/b&gt;:&lt;br&gt;Physical test report" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="190" y="580" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-24" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-25" target="QMgodMLKlRWmOpSdiSMq-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-25" value="&lt;b&gt;Evidence E2:&lt;/b&gt;&lt;br&gt;Flying Tweety Sightings" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="310" y="580" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-26" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="225" y="710" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-27" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="345" y="710" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-28" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-29" target="QMgodMLKlRWmOpSdiSMq-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-29" value="&lt;b&gt;Evidence E3:&lt;/b&gt;&lt;br&gt;Tweety&#39;s DNA test results" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="520" y="580" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-30" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-31" target="QMgodMLKlRWmOpSdiSMq-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-31" value="Undermine UM1: Unless the DNA test was contaminated" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#A9C4EB;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="540" y="730" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-32" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-33" target="QMgodMLKlRWmOpSdiSMq-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-33" value="&lt;b&gt;Sub-Claim C5:&lt;br&gt;&lt;/b&gt;The DNA sample has no cross-contamination" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="590" y="830" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-34" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-35" target="QMgodMLKlRWmOpSdiSMq-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-35" value="&lt;b&gt;Evidence E4:&lt;/b&gt;&lt;br&gt;Lab Procedures" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="660" y="930" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-36" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="695" y="1060" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-37" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=61.5;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-38" target="QMgodMLKlRWmOpSdiSMq-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-38" value="&lt;b&gt;Inference Rule IR1:&lt;/b&gt; If tweety is a bird then it can fly" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#A9C4EB;size=0.05555555555555555;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="530" y="150" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-39" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="QMgodMLKlRWmOpSdiSMq-1" source="QMgodMLKlRWmOpSdiSMq-40" target="QMgodMLKlRWmOpSdiSMq-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-40" value="Undercut UC1: Unless Tweety is a juvenile" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#F19C99;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="605" y="250" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-41" value="&lt;b&gt;Sub-Claim C6:&lt;br&gt;&lt;/b&gt;Tweety is a member of a flying bird species" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="660" y="360" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QMgodMLKlRWmOpSdiSMq-42" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#000000;" vertex="1" parent="QMgodMLKlRWmOpSdiSMq-1">
+          <mxGeometry x="715" y="420" width="30" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
