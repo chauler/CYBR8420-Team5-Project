@@ -1,0 +1,159 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" scale="1" border="0" version="28.2.7">
+  <diagram name="Page-1" id="ORHXjaL5HyGVOa-cgqHC">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-3" target="QbHlkjZsmV1OJGKXMgm8-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-3" target="QbHlkjZsmV1OJGKXMgm8-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="280" />
+              <mxPoint x="-70" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-51" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-3" target="QbHlkjZsmV1OJGKXMgm8-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-3" value="&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Top-Claim C1: Browser ensures secure web connection&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="170" y="90" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-4" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Context CT1: Browser operates on a trusted system with up-to-date security patches&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="425" y="97.5" width="150" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-20" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-15" target="QbHlkjZsmV1OJGKXMgm8-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-15" value="&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Rebuttal R1: Unless the browser accepts expired, self-signed, or rogue certificates&lt;/span&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="-170" y="310" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-19" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Sub-Claim C2: Browser establishes a secure communication channel&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="450" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-21" value="R&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;ebuttal R2: Unless weak ciphers or obsolete TLS versions are used&lt;/span&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="-170" y="560" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-39" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-22" target="QbHlkjZsmV1OJGKXMgm8-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-22" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Sub-Claim C3: Validates certificates and rejects invalid or expired ones&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-140" y="680" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-19" target="QbHlkjZsmV1OJGKXMgm8-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-25" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-70" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-28" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-26" target="QbHlkjZsmV1OJGKXMgm8-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-26" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Rebuttal R3: Unless mixed content or downgrade attacks bypass HTTPS enforcement&lt;/span&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="170" y="310" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-49" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-27" target="QbHlkjZsmV1OJGKXMgm8-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-27" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Sub-Claim C4: Enforces HTTPS for all user-initiated connections (HSTS/HTTPS-only mode)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="440" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-31" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.368;entryY=-0.029;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-3" target="QbHlkjZsmV1OJGKXMgm8-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-44" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-32" target="QbHlkjZsmV1OJGKXMgm8-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-32" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Rebuttal R4: Unless DNS spoofing bypasses secure resolution&lt;/span&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="420" y="310" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.265;entryY=0.043;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-3" target="QbHlkjZsmV1OJGKXMgm8-32">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="280" />
+              <mxPoint x="465" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-43" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-34" target="QbHlkjZsmV1OJGKXMgm8-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-34" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Sub-Claim C5: Browser securely validates DNS responses (DNSSEC or DoH/DoT)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="430" y="445" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-46" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-35" target="QbHlkjZsmV1OJGKXMgm8-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-35" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Rebuttal R5: Unless browser UI fails to alert users of insecure connections&lt;/span&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="660" y="310" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-47" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-36" target="QbHlkjZsmV1OJGKXMgm8-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-36" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Sub-Claim C6: Browser UI provides clear indicators for connection security&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="430" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-3" target="QbHlkjZsmV1OJGKXMgm8-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="270" />
+              <mxPoint x="745" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-57" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-38" target="QbHlkjZsmV1OJGKXMgm8-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-38" value="&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Evidence E1 &amp;amp; 2: TLS Security Validation Report &lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-132.5" y="790" width="135" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-59" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-41">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="505" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-41" value="&lt;span&gt;&lt;/span&gt;&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Evidence E4: DNS Security Test&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="465" y="600" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-60" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="745" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-45" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Evidence E5: User Testing Report&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="705" y="560" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-58" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QbHlkjZsmV1OJGKXMgm8-48">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-48" value="&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Evidence E3: HSTS Enforcement&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="225" y="580" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-50" value="&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;Inference Rule IR1: If all connections use TLS 1.3+ with valid certificates, communication remains confidential and authentic&lt;/span&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="430" y="180" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-53" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=light-dark(#BFBABA,#EDEDED);" vertex="1" parent="1">
+          <mxGeometry x="-80" y="980" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-61" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=light-dark(#C9C4C4,#EDEDED);" vertex="1" parent="1">
+          <mxGeometry x="250" y="720" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-62" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=light-dark(#B8B3B3,#EDEDED);" vertex="1" parent="1">
+          <mxGeometry x="490" y="750" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QbHlkjZsmV1OJGKXMgm8-63" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=light-dark(#BDB8B8,#EDEDED);" vertex="1" parent="1">
+          <mxGeometry x="730" y="690" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Y2dkUVGr8M2KQojI8CKs-1" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 18px;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Assurance Case&lt;br&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Assurance Case diagram for the claim that the browser ensures secure web communication by maintaining confidentiality and integrity of data transmitted over trusted connections&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="70" width="175" height="10" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
