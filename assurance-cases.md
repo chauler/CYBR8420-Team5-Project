@@ -1,15 +1,15 @@
 # Assurance Cases
 
 ## Top Claim #1 (Jason) - Browser protect user-stored data
-![Protect User-Stored Data Assurance Case](docs/Navigate_URL_Assurance_Case.svg)
+![Protect User-Stored Data Assurance Case](docs/assurance_cases/Navigate_URL_Assurance_Case.svg)
 =======
 
 
 ## Top Claim #2 (Logan) - 
-![File Download Protection Assurance Case](docs/Filedownload_Assurance_Case.svg)
+![File Download Protection Assurance Case](docs/assurance_cases/Filedownload_Assurance_Case.svg)
 
 ## Top Claim #3 (Arun) - Browser ensures secure web connection
-![Secure web connection Assurance Case](docs/Secure%20Web%20Connection-%20Assurance%20Case.svg)
+![Secure web connection Assurance Case](docs/assurance_cases/Secure%20Web%20Connection-%20Assurance%20Case.svg)
 
 **Part2**
 For the Secure Web Communication assurance case, most identified evidence—like TLS validation, certificate verification, and HTTPS enforcement—partially aligns with the current Ladybird Browser security framework.
@@ -23,10 +23,10 @@ For the Secure Web Communication assurance case, most identified evidence—like
 
 
 ## Top Claim #4 (Alex) - 
-![Protect User Inputs Assurance Case](docs/Protect_User_Inputs_Assurance_Case.svg)
+![Protect User Inputs Assurance Case](docs/assurance_cases/Protect_User_Inputs_Assurance_Case.svg)
 
 ## Top Claim #5 (Godwin) - Browser seperates networking from page execution
-![Seperates Networking from Page Execution Assurance Case](docs/Assurance_Claim_Netoworking.jpg)
+![Seperates Networking from Page Execution Assurance Case](docs/assurance_cases/Assurance_Claim_Netoworking.jpg)
 
 
 <hr style="border-top: 6px dotted white;">
