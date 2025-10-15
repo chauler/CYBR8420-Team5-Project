@@ -6,7 +6,7 @@
 
 
 ## Top Claim #2 (Logan) - 
-![File Download Protection Assurance Case](docs/assurance_cases/Filedownload_Assurance_Case.svg)
+![File Download Protection Assurance Case](docs/assurance_cases/Filedownload_Assurance_Case_Revised.svg)
 
 ## Top Claim #3 (Arun) - Browser ensures secure web connection
 ![Secure web connection Assurance Case](docs/assurance_cases/Secure%20Web%20Connection-%20Assurance%20Case.svg)
