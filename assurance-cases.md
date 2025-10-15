@@ -23,7 +23,7 @@ For the Secure Web Communication assurance case, most identified evidence—like
 
 
 ## Top Claim #4 (Alex) - 
-![Protect User Inputs Assurance Case](docs/assurance_cases/Protect_User_Inputs_Assurance_Case.svg)
+![Protect User Inputs Assurance Case](docs/assurance_cases/Protect_User_Inputs_Assurance_Case_Revised.svg)
 
 ## Top Claim #5 (Godwin) - Browser seperates networking from page execution
 ![Seperates Networking from Page Execution Assurance Case](docs/assurance_cases/Assurance_Claim_Netoworking.jpg)
