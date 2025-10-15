@@ -6,13 +6,27 @@
 
 
 ## Top Claim #2 (Logan) - 
+![File Download Protection Assurance Case](docs/Filedownload_Assurance_Case.svg)
 
-## Top Claim #3 (Arun) - 
+## Top Claim #3 (Arun) - Browser ensures secure web connection
+![Secure web connection Assurance Case](docs/Secure%20Web%20Connection-%20Assurance%20Case.svg)
+
+**Part2**
+For the Secure Web Communication assurance case, most identified evidence—like TLS validation, certificate verification, and HTTPS enforcement—partially aligns with the current Ladybird Browser security framework.
+
+- Available Evidence: Strong TLS integration and certificate verification     align with E1 (TLS Interoperability Scan Report) and E2 (Certificate Validation Tests).
+
+- Needs Improvement: DNSSEC validation, HSTS enforcement, and certificate transparency are not fully implemented or documented, requiring additional effort to satisfy E3 and E4.
+
+- Gap Summary: Core cryptographic protections exist, but user-facing validation and supporting documentation still need enhancement.
+
+
 
 ## Top Claim #4 (Alex) - 
 ![Protect User Inputs Assurance Case](docs/Protect_User_Inputs_Assurance_Case.svg)
 
-## Top Claim #5 (Godwin) - 
+## Top Claim #5 (Godwin) - Browser seperates networking from page execution
+![Seperates Networking from Page Execution Assurance Case](docs/Assurance_Claim_Netoworking.jpg)
 
 
 <hr style="border-top: 6px dotted white;">
@@ -41,4 +55,15 @@ The following AI prompt was used to refine and improve assurance claim for prote
 
 <hr style="border-top: 6px dotted white;">
 
-## Discussion
+## Part 2
+
+From the File Download assurance case, there is evidence of filename prompting before downloading, but there is not a proactive threat intelligence service to highlight any URLs that should be blocked. This is a gap that could be remediated by having a way to import a third party intelligence list or even having an automatically updating threat list based on community additions. 
+
+Because many behaviors of the software are user-facing, evidence of security features are often also visible through normal use. For the protection of user inputs, the masking of the password-type input's value is evident to users, and proving that scripts disallowed by a site aren't running can also be done via the console. This includes scripts disallowed by the Content Security Policy (since the HTTP responses from sites are visible in the console) and disallowed inline scripts. Evidence for the encyption of saved passwords, though, is not available and would require additional efforts to collect.
+
+## Reflection
+Logan: This assignment was particularly interesting for getting in the mindset of continually asking questions to probe how well the security questions are being answered. The rebuttal-subclaim cycle was particularly interesting, and seeing how my group members went about the process was insightful to see just how well the tactic can be leveraged. 
+
+Arun: Working on the Secure Web Connection assurance case helped me bridge theoretical assurance modeling with practical browser security design. I learned how structured claims, rebuttals, and evidence can systematically build trust in mechanisms like TLS enforcement and certificate validation. The most valuable part was identifying evidence gaps, which showed how assurance cases complement software testing and documentation. This exercise also deepened my understanding of how open-source projects validate and communicate their security posture.
+
+Alex: The "unless" style of argumentation really helped me break down arguments that I normally would struggle to break down, so that was a helpful characteristic of this diagram. This diagram also helped me learn methods of conveying information that is deep enough to convince an expert, but approachable enough to convince someone who is not an expert.
