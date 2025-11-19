@@ -8,7 +8,7 @@
 [Secure Web Connection Threat Report](https://htmlpreview.github.io/?https://github.com/chauler/CYBR8420-Team5-Project/blob/main/docs/DFDs/Ladybird%20sec%20connection%20TMT%20report-Level1.htm)
 
 # Part 2
-[Ladybird Security Observations PDF](https://htmlpreview.github.io/?https://github.com/chauler/CYBR8420-Team5-Project/blob/main/docs/DFDs/GeneratedDDFThreats.pdf)
+[Ladybird Security Observations PDF](https://github.com/chauler/CYBR8420-Team5-Project/blob/main/docs/DFDs/GeneratedDFDThreats.pdf)
 
 [Ladybird Security Observations Excel Link](https://uofnebraska-my.sharepoint.com/:x:/r/personal/02911816_nebraska_edu/_layouts/15/Doc.aspx?sourcedoc=%7B69B45480-2F0E-476E-A45F-E8D066D8C461%7D&file=Generated%20DFD%20threats.xlsx&wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&action=default&mobileredirect=true)
 
