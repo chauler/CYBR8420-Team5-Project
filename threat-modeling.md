@@ -7,3 +7,5 @@
 
 # Reflections
 The most useful part of this assignment was the deep dive into the actual codebase. I learned as much about Ladybird from this assignment as I had from everything else to this point. Beyond that, the threat modeling software applying STRIDE to pretty much every single flow of data caused me to think about interactions that I otherwise would have written off as insignificant or unrelated. While it ended up not being applicable due to a password manager not yet being implemented, the threats in the report caused me to do a deep dive on how browsers do protect this data.
+
+The part I found most interesting in this assignment was how the threat modeling tool is used and the different customizations within entities to really build an undertanding of the various threats and how different systems are connected to each other. It was also interesting learning more about LadyBird in this assignment and understanding the concrete threats that the browser might face.
