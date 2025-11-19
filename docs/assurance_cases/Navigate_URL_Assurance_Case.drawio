@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5">
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
   <diagram id="2RAkf9iS2bYrb-5zrusB" name="Page-1">
-    <mxGraphModel dx="1892" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1598" dy="954" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -13,13 +13,13 @@
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-2" value="&lt;b&gt;Top-Claim C1:&lt;br&gt;&lt;/b&gt;&lt;span data-teams=&quot;true&quot;&gt;Browser protects user stored data.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="172" y="150" width="230" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-3" value="Context: CT1&lt;br&gt;The browser is being operated on a trusted machine with up to date security patches" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;" parent="1" vertex="1">
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-3" value="&lt;b&gt;Context: CT1&lt;/b&gt;&lt;br&gt;The browser is being operated on a trusted machine with up to date security patches" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;" parent="1" vertex="1">
           <mxGeometry x="560" y="152.5" width="215" height="65" as="geometry" />
         </mxCell>
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-5" target="EpLoNu7SxfJ4iQwhgqlz-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-5" value="Rebuttal R1: An attacker with access to the device could extract saved passwords or tokens if encryption is weak or not tied to the device security." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-5" value="&lt;b&gt;Rebuttal R1:&lt;/b&gt;&amp;nbsp;Unless an attacker with access to the device extracts saved passwords or tokens." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
           <mxGeometry x="29" y="300" width="229" height="70" as="geometry" />
         </mxCell>
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-12" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-8" target="EpLoNu7SxfJ4iQwhgqlz-10" edge="1">
@@ -31,13 +31,13 @@
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-16" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-10" target="EpLoNu7SxfJ4iQwhgqlz-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-10" value="Rebuttal R3:Weak key handling or misconfiguration could let unauthorized parts of the browser decrypt sensitive data." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-10" value="&lt;b&gt;Rebuttal R3: &lt;/b&gt;Unless&lt;b&gt;&amp;nbsp;&lt;/b&gt;Weak key handling or misconfiguration lets unauthorized parts of the browser decrypt sensitive data." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
           <mxGeometry x="39" y="540" width="210" height="70" as="geometry" />
         </mxCell>
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-17" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-11" target="EpLoNu7SxfJ4iQwhgqlz-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-11" value="Rebuttal R4: Scripts or extensions could bypass isolation and access data they shouldn’t, even without direct permission." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-11" value="&lt;b&gt;Rebuttal R4:&lt;/b&gt;&amp;nbsp;Unless scripts or extensions bypass isolation and access data they do not have permissions for." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
           <mxGeometry x="314.25" y="538" width="216.75" height="82" as="geometry" />
         </mxCell>
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-20" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.663;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-14" target="EpLoNu7SxfJ4iQwhgqlz-18" edge="1">
@@ -52,7 +52,7 @@
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-27" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-15" target="EpLoNu7SxfJ4iQwhgqlz-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-15" target="Z5VQjGnt7yqMzGL-vnQg-1">
+        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-15" target="Z5VQjGnt7yqMzGL-vnQg-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-15" value="&lt;b&gt;Sub-Claim C5:&lt;br&gt;&lt;/b&gt;Code from websites cannot view or steal stored passwords, history, or personal data unless clearly allowed by the user." style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -81,7 +81,7 @@
             <mxPoint x="360" y="920" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-26" value="&lt;b&gt;Evidence E3:&lt;/b&gt;&lt;br&gt;Statoc Code Analysis" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" parent="1" vertex="1">
+        <mxCell id="EpLoNu7SxfJ4iQwhgqlz-26" value="&lt;b&gt;Evidence E3:&lt;/b&gt;&lt;br&gt;Static Code Analysis" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="295.25" y="785" width="100" height="100" as="geometry" />
         </mxCell>
         <mxCell id="EpLoNu7SxfJ4iQwhgqlz-34" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" parent="1" vertex="1">
@@ -90,7 +90,7 @@
         <mxCell id="WvyiRJ8lm2nUQYYzynBj-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" source="WvyiRJ8lm2nUQYYzynBj-3" target="WvyiRJ8lm2nUQYYzynBj-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="WvyiRJ8lm2nUQYYzynBj-3" value="Rebuttal R2: If process isolation fails, a malicious website could break out of its sandbox and access stored user data." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
+        <mxCell id="WvyiRJ8lm2nUQYYzynBj-3" value="&lt;b&gt;Rebuttal R2: &lt;/b&gt;Unless&lt;b&gt;&amp;nbsp;&lt;/b&gt;process isolation fails, or a malicious website is able to break out of its sandbox and access stored user data." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=17;fillColor=#FFF2CC;" parent="1" vertex="1">
           <mxGeometry x="308" y="300" width="230" height="70" as="geometry" />
         </mxCell>
         <mxCell id="WvyiRJ8lm2nUQYYzynBj-4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;curved=0;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-2" target="WvyiRJ8lm2nUQYYzynBj-3" edge="1">
@@ -105,16 +105,16 @@
         <mxCell id="WvyiRJ8lm2nUQYYzynBj-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;curved=0;" parent="1" source="EpLoNu7SxfJ4iQwhgqlz-2" target="EpLoNu7SxfJ4iQwhgqlz-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="Z5VQjGnt7yqMzGL-vnQg-1" target="Z5VQjGnt7yqMzGL-vnQg-2">
+        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" source="Z5VQjGnt7yqMzGL-vnQg-1" target="Z5VQjGnt7yqMzGL-vnQg-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-1" value="&lt;b&gt;Evidence E4:&lt;/b&gt;&lt;div&gt;Content Security Policies (CSP) Configuration&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-1" value="&lt;b&gt;Evidence E4:&lt;/b&gt;&lt;div&gt;Content Security Policies (CSP) Configuration&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="444" y="785" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" vertex="1" parent="1">
+        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCCCCC;" parent="1" vertex="1">
           <mxGeometry x="479.5" y="910" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-6" value="Context: CT2&lt;br&gt;The browser is running under expected operating conditions" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;" vertex="1" parent="1">
+        <mxCell id="Z5VQjGnt7yqMzGL-vnQg-6" value="&lt;b&gt;Context: CT2&lt;/b&gt;&lt;br&gt;The browser is running under expected operating conditions" style="rounded=1;whiteSpace=wrap;html=1;arcSize=30;" parent="1" vertex="1">
           <mxGeometry x="560" y="250" width="215" height="65" as="geometry" />
         </mxCell>
       </root>
