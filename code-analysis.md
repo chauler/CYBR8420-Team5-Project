@@ -1,3 +1,6 @@
+## Top Claim #1 (Jason) - Browser protect user-stored data
+![Protect User-Stored Data Assurance Case](docs/assurance_cases/Navigate_URL_Assurance_Case_Revised.jpg)
+
 
 # Part 1
 
