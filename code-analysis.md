@@ -90,6 +90,73 @@ Search the codebase for hardcoded passwords (SWE-257), API keys, default secrets
 2.	In Tests/LibWeb/Text/expected/Fetch/fetch-requst-url-search-params.txt there is an exposed plain text username and password.
 3.	In Libraries/LibWeb/Cypto/Cryptokey.cpp the CryptoKey serialization includes "for_storage" path. In this scenario, private key material may be serialized. The code supports structured serialization with a for_storage flag that implies keys could be serialized for persistent storage which can possibly include private key material Private keys and secret symmetric keys, if serialized to storage as plaintext or in an extractable form, are secrets.
 
+### CWE-285: Improper Authorization
+<b>Abstraction:</b> Class
+
+The product does not perform or incorrectly performs an authorization check when an actor attempts to access a resource or perform an action.
+
+<b>What was reviewed:</b>
+
+Focused on the parts of the code and documentation that describe how RequestServer serves as a network broker for renderer-like processes: Documentation / architecture - Documentation/Browser/ProcessArchitecture.md (multi-process model; WebContent → RequestServer → network). Network broker implementation - Services/RequestServer/* (HTTP/HTTPS and WebSocket job creation, LibCurl integration, connection cache). Callers / clients - WebContent / WebView integration paths that initiate RequestServer jobs. 
+
+
+<b>Key findings</b>
+
+1.	In Services/RequestServer/ConnectionFromClient.cpp, RequestServer builds outgoing HTTP/WebSocket jobs on behalf of its clients (WebContent, workers, etc.) using parameters received over IPC. If the RequestServer side only validates request shape (URL, method, headers) but does not bind the request to the caller’s security context (origin, profile, permission set), then any renderer that can reach RequestServer could perform network actions it is not authorized for such as cross-profile requests, access to internal endpoints, or bypassing per-tab restrictions.
+2.	The architecture document notes that each WebContent process gets its own RequestServer instance for uploads/downloads. If that one-to-one mapping is not strictly enforced or is later relaxed (for example, multiple WebContent clients sharing one RequestServer instance, or non-WebContent clients using the same IPC endpoint), authorization decisions may need extra per-client checks. Missing or inconsistent checks can become improper authorization issues.
+3.	Any trusted capability exposed over its IPC API such as opening arbitrary TCP connections, following redirects, or sending non-HTTP traffic must be guarded by authorization logic. If future embedders add new IPC messages or privileged network features and forget to enforce “who is allowed to call this,” those become CWE-285 weaknesses even if the core RequestServer code is otherwise correct.
+4.  Because RequestServer is a separate process, OS-level privileges and sandboxing may differ from WebContent. If RequestServer runs with broader filesystem or network permissions than WebContent, but the IPC layer treats all clients equally, this can allow less-privileged components to borrow RequestServer’s privileges unless the API performs explicit authorization for sensitive actions.
+
+### CWE-441: Unintended Proxy or Intermediary (“Confused Deputy”)
+<b>Abstraction:</b> Class
+
+The product receives a request or directive from an upstream component but does not sufficiently preserve or enforce the original source when forwarding it to an external actor, causing the product to act as an unintended proxy or intermediary. 
+
+<b>What was reviewed:</b>
+
+Process architecture - The documentation that describes RequestServer as the process that actually “uses networking protocols (HTTP/HTTPS) to request files from the outside world” on behalf of WebContent. Request forwarding paths - Services/RequestServer/ConnectionFromClient.cpp for how incoming IPC requests are translated into LibCurl jobs and outbound connections. RequestServer connection caching and URL handling (ConnectionCache.cpp, AK::URL::serialized_host usage) as seen in upstream issue reports. 
+
+
+<b>Key findings</b>
+
+1.	RequestServer’s role matches the CWE-441 threat model: a component receives requests from less-privileged clients and forwards them to external network endpoints using its own network privileges. If RequestServer does not track the client who requested and does not enforce per-client policies, any client that can send IPC messages could potentially ask RequestServer to contact internal IPs/ports and abuse unusual schemes or protocols exposed via LibCurl backends such as FTP and custom schemes if those are enabled but not filtered by policy.
+2.	CWE-441 examples often arise when a product forwards traffic on behalf of a client without enforcing its own access rules, effectively letting the client tunnel through firewalls or network boundaries. Because RequestServer runs as a separate process that may have different OS-level network visibility than the WebContent sandbox, it can become that “network deputy.” If WebContent can send arbitrary HTTP headers or arbitrary target hosts/ports through IPC, Ladybird risks becoming a generic network proxy.
+3.	Even if Ladybird never exposes RequestServer directly to untrusted external clients, a compromised WebContent process could use the RequestServer API as a stepping stone to move laterally or exfiltrate data by having a more trusted process speak on its behalf.
+
+### CWE-923: Improper Restriction of Communication Channel to Intended Endpoints
+<b>Abstraction:</b> Class
+
+The product establishes a communication channel to (or from) an endpoint for privileged or protected operations, but it does not properly ensure that it is communicating with the correct endpoint.  
+
+<b>What was reviewed:</b>
+
+Inter-process communication - The conceptual RequestServer IPC endpoints used by WebContent and potentially other clients. Backend network and DNS layers - Mention of the stub resolver (LibDNS::Resolver) and its integration with RequestServer/LibCurl in external discussions. The architecture doc’s discussion that RequestServer relies on a global LookupServer service for DNS queries. 
+
+
+<b>Key findings</b>
+
+1.	Multiple communication channels must be correctly “bound” to their intended endpoints: WebContent → RequestServer: The IPC channel should ensure that only the associated WebContent instance can issue network requests to its RequestServer. If other local processes can spoof this endpoint or connect to the same IPC interface, they could inherit the same network privileges, which maps directly to CWE-923. RequestServer → LookupServer/DNS: If RequestServer relies on a separate DNS resolver (LookupServer or LibDNS stub resolver) without verifying that it is the legitimate system resolver, malicious local processes could impersonate or MITM that resolver and control where outgoing connections go.
+2.	For external network connections, RequestServer translates a URL and options into a LibCurl job. External references show that WebSocket and HTTP handling are implemented in single files such as ConnectionFromClient.cpp, which manage how endpoints and protocols are chosen. If RequestServer does not enforce constraints like: “Only connect to the hostname derived from the original URL and DNS resolution,” “Do not follow redirects to disallowed schemes/hosts,” or “Do not reuse connection state from one origin for another,” then it risks mis-binding communication channels and talking to unintended endpoints, which is the core of CWE-923.
+3.	As the browser evolves by additions such as adding support for system proxies, HTTP/2/3, or custom backends, any new connection path must ensure that it is bound to the correct intended remote endpoint, and the IPC channel only allows authorized local clients to use that path. Otherwise, both local spoofing and remote redirection attacks may fall under CWE-923.
+
+
+### CWE-770: Allocation of Resources Without Limits or Throttling
+<b>Abstraction:</b> Class
+
+The product allocates a reusable resource or group of resources on behalf of an actor without imposing limits on the size or number of resources that can be allocated. 
+
+<b>What was reviewed:</b>
+
+Runtime behavior under load, GitHub issue “Page with too many files” (#3185), where navigating to a Wikipedia page with many external resources causes RequestServer to log repeated errors: StartRequest: Failed to create pipe: pipe2: Too many open files (errno=24) while CPU spikes to 100%. Network job handling, Services/RequestServer/* which is responsible for creating per-request jobs and managing connections for each WebContent client. 
+
+
+<b>Key findings</b>
+
+1.	The “Too many open files (errno=24)” logs from RequestServer on a resource-heavy page show that, under stress, the process can hit OS-level descriptor limits just by handling a single page with many resources. This is strong evidence that RequestServer will eagerly allocate OS resources like pipes, connections, and file descriptors on behalf of content without effectively throttling or pooling them.
+2.	From a CWE-770 perspective, this suggests the per-tab or per-origin limits on outstanding requests, connections, or open pipes may either not exist or not be tuned for worst-case pages. A malicious page instead of just a heavy Wikipedia page, could deliberately exploit this by issuing many parallel requests via JavaScript, <img> floods, or WebSockets, consuming all available descriptors in the RequestServer process and causing denial of service for other tabs.
+3.	Because every tab’s networking goes through RequestServer, a resource exhaustion in that process can have browser-wide impact in that wew connections for other tabs may fail and existing connections might be dropped or starved if the process cannot allocate additional pipes or sockets.
+4.  The stress-test issue also implies that logging “too many open files” is not sufficient mitigation: the underlying resource allocation still failed, and the browser needs work to gracefully degrade. Without defensive throttling and bounds, this is the kind of behavior CWE-770 describes.
+
 
 Summary of the automated code reviews that were performed
 
