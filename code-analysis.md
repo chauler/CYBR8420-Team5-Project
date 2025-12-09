@@ -236,7 +236,7 @@ A certificate must match the requested hostname (CN/SAN matching). Missing or in
 
 <b>Key findings:</b>
 
-1.	No clearly identifiable hostname-matching function in the TLS validation path. #take note of this
+1.	No clearly identifiable hostname-matching function in the TLS validation path.
 2.	SAN/CN comparison logic is not prominently visible.
 3.	If hostname validation is incomplete, an attacker could present a certificate for a different domain and still pass validation.
 4.	This is one of the highest-risk gaps for HTTPS correctness.
@@ -278,7 +278,7 @@ HTTPS security depends on rejecting weak cipher suites and disabling outdated TL
 
 <b>Key findings:</b>
 
-1.	No visible mechanism enforcing minimum TLS version (e.g., TLS 1.2+). #Take note of this
+1.	No visible mechanism enforcing minimum TLS version (e.g., TLS 1.2+).
 2.	It is unclear whether weak ciphers (e.g., RC4, null, export-grade) are filtered out.
 3.	Crypto library defaults may behave securely, but explicit hardening is not documented.
 4.	This merits enhancement to avoid cryptographic downgrade paths.
@@ -335,4 +335,6 @@ For the planned contribution to the open-sourced project, we can pick one of the
 
 ## Summary of Findings
 
-Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not a major concern.
+Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not high risk in our operating environment.
+
+[Repository link](https://github.com/chauler/CYBR8420-Team5-Project)
