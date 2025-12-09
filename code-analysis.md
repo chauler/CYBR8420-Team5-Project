@@ -17,7 +17,7 @@ The code transmits data to another actor, but a portion of the data includes sen
 
 Searched the codebase for locations that implement outgoing request construction and cookie access. This identified places in the code that could lead to "Insertion of Sensitive Information Into Sent Data" (CWE-201).
 
->b>Key findings:</b> 
+<b>Key findings:</b> 
 
 1.	In Libraries/LibWeb/Fetch/Fetching/Fetching.cpp cookies are explicitly appended to outgoing HTTP requests. If page_did_request_cookie is implemented incorrectly, it could include httpOnly cookies in contexts where they should not be exposed, for example JavaScript or it could return the cookie to the wrong origin which could leak sensitive information. 
 2.	In Libraries/LibWeb/Fetch/Fetching/Fetching.cpp if the serialization of the referrer url contains sensitive information, for example query parameters with PII or authentication tokens in the URL, those could be sent to a third party in the Referer header.
@@ -327,18 +327,80 @@ C++ code handling TLS messages, records, and parsing is susceptible to buffer mi
 3.	WebSocketCurl code also contains buffer access patterns needing additional size checks.
 4.	All are low-to-medium severity but warrant manual review.
 
-Summary of the automated code reviews that were performed
+
+### CWE-22: Improper Limitation of a Pathname to a Restricted Directory (Path Traversal / Zip-Slip)
+
+<b>Abstraction:</b> Class
+
+When a ZIP file is downloaded, the content-disposition header can be manipulated to include a specific filepath, allowing writes outside the intended download directory.
+
+<b>What was reviewed:</b>
+
+Searched for filename construction and parsing, and archive extraction helpers tied to download flows:
+
+Libraries/LibWeb/HTML/FormControlInfrastructure.cpp (Content-Disposition construction)
+
+Libraries/LibWeb/Fetch/Body.cpp (multipart/form-data header parsing)
+
+Meta/CMake/utils.cmake (archive extraction via file(ARCHIVE_EXTRACT))
+
+<b>Key findings:</b>
+
+Filenames are sanitized for control characters but not canonicalized; “..”, absolute paths, and path separators are not explicitly rejected.
+
+Header parsing for multipart/form-data is robust, but downstream filename handling does not enforce safe on-disk semantics.
+
+Archive extraction lacks explicit per-entry containment checks, enabling classic zip-slip if the extractor doesn’t enforce it.
+
+### CWE-78: Improper Neutralization of Special Elements Used in an OS Command (OS Command Injection)
+
+<b>Abstraction:</b> Class
+
+If environment values or filenames are used directly as executables or arguments without validation, an attacker can cause the execution of arbitrary binaries.
+
+<b>What was reviewed:</b>
+
+Searched for process execution paths and environment-driven command launches:
+
+Libraries/LibLine/InternalFunctions.cpp (external editor invocation)
+
+<b>Key findings:</b>
+
+In this scenario, the EDITOR is read from the environment and passed directly to execvp with no validation or whitelisting where the executable path is untrusted
+
+### CWE-494: Download of Code Without Integrity Check
+
+<b>Abstraction:</b> Base
+
+Downloading code or critical artifacts without mandatory hash/signature verification allows tampered content to be accepted even over HTTPS.
+
+<b>What was reviewed:</b>
+
+Examined build/tooling download paths and integrity enforcement:
+
+Meta/gn/build/download_file.py (Python download helper)
+
+Meta/CMake/utils.cmake (file(DOWNLOAD) helper)
+
+<b>Key findings:</b>
+
+The python helper supports optional SHA-256, but only verifies if a hash is provided.
+
+CMake helper can accept an expected hash, but usage is optional again. 
+
+Overall, there is no mandatory SHA-256 requirement and thus no comprehensive integrity check. 
+
 
 # Part 2
-There is a lot of repeat in part 2 of what was asked for in part 1.  In part 1, we include a summary of the manual and automated code review findings. In part 2 we add in the perceived risk in our hypothetical operational environments (which I think is a professional workspace)
-For the planned contribution to the open-sourced project, we can pick one of the vulnerabilities that the automated code scanning identified. 
 
 ## Summary of Findings
+
+In the file download assurance case, there are two critical vulnerabilities, the first being related to CWE-22. This CWE suggests that a file downloaded with a content-disposition header that renames the file to have an absolute filepath can force a file to be downloaded to a location outside the standard downloads folder. CWE-494 is the most important though in terms of file download vulnerability, where verified signatures are not required by the browser, so a compromised mirror or redirect could inject malicious code into artifacts used by the browser. This is magnified by the fact that even a user-visible download prompt would not prevent a malicious file from being downloaded.
 
 ### Findings Related to HTTPS and Connection Security
 Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not high risk in our operating environment. These CWEs were relevant for misuse cases related to MITM attacks and other attacks that attempt to inject malicious code via an insecure connection
 
 ## Reflection
-From this assignment, we learned useful techniques for performing code reviews in the context of security assurance. Specifically, the idea of identifying key CWEs and tailoring code review efforts around those weaknesses was a useful approach. This allowed for focused analysis that resulted in an easier time identifying either correct implementations or potential gaps.
+From this assignment, we learned useful techniques for performing code reviews in the context of security assurance. Specifically, the idea of identifying key CWEs and tailoring code review efforts around those weaknesses was a useful approach. This allowed for focused analysis that resulted in an easier time identifying either correct implementations or potential gaps. Additionally, the use of AI to do a manual code review, and going back and forth with it to identify relevant CWEs, their uses, and the weaknesses of the code to relevant CWEs was particularly useful. The AI chats that I used both provided particularly good context for the CWEs that I identified and helped create scenarios for exploitation. 
 
 [Repository link](https://github.com/chauler/CYBR8420-Team5-Project)
