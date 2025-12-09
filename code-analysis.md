@@ -3,7 +3,7 @@
 ## Code-review strategy
 As a team, we decided to use a hybrid approach to our code review of the ladybird browser codebase. The ladybird browser is a fairly large and complex codebase to analyze. Each of us took the misuse and assurance cases that we created in previous assignments and focused on the code that provided those capabilities. We are doing a hybrid of scenario based and weakness based code review. 
 
-The code being C++ was going to add some complexity for automated scanning tools to perform a static analysis of the code because the tools would need to compile the code. We addressed these challenges by each team member selecting a different scanning tool to attempt. Between the five team members, we figured we should be able to get at least one or two automated code scanning tool results. We were able to successfully use Checkov, ..., but were not able to get SonarQube to work. We also performed manual code reviews to bridge the gap of static analysis for the automated tools and in total put together a list of CWEs most relevant to our assurance cases.  
+The code being C++ was going to add some complexity for automated scanning tools to perform a static analysis of the code because the tools would need to compile the code. We addressed these challenges by each team member selecting a different scanning tool to attempt. Between the five team members, we figured we should be able to get at least one or two automated code scanning tool results. We were able to successfully use Checkov and clang-analyzer, but were not able to get SonarQube to work. We also performed manual code reviews to bridge the gap of static analysis for the automated tools and in total put together a list of CWEs most relevant to our assurance cases.  
 
 ## CWE Analysis
 
@@ -85,6 +85,47 @@ Search the codebase for hardcoded passwords (SWE-257), API keys, default secrets
 1.	In Libraries/LibWeb/CredentialManagement/PasswordCredentials.h  PasswordCredential stores password as plain String (TODO to use secret type). Passwords are held in a normal String (m_password) and exposed via password() method that returns a String constant. The TODO explicitly notes the intent to switch to a secret container, but it is not yet done. Secrets in regular String objects are often immutable buffers that may be copied, swapped to disk via core dumps, swapped to swapfile, or logged unintentionally. 
 2.	In Tests/LibWeb/Text/expected/Fetch/fetch-requst-url-search-params.txt there is an exposed plain text username and password.
 3.	In Libraries/LibWeb/Cypto/Cryptokey.cpp the CryptoKey serialization includes "for_storage" path. In this scenario, private key material may be serialized. The code supports structured serialization with a for_storage flag that implies keys could be serialized for persistent storage which can possibly include private key material Private keys and secret symmetric keys, if serialized to storage as plaintext or in an extractable form, are secrets.
+
+### CWE-940: Improper Verification of Source of a Communication Channel
+<b>Abstraction:</b> Base
+The product establishes a communication channel to handle an incoming request that has been initiated by an actor, but it does not properly verify that the request is coming from the expected origin.
+
+<b>What was reviewed:</b>
+Files related to encryption of network communications: LibTLS, LibCrypto/OpenSSL.cpp.
+
+<b>Key findings</b>
+Hostname verification is explicitly enabled in TLSv12.cpp:244. Handshake errors abort the connection, abandoning connections where verification fails. This is for websocket connections. For regular HTTPS connections, hostname verification is handled by libcurl, which defaults to strict verification. This is not overridden by ladybird in the RequestServer or Request classes.
+OpenSSL cypher suites are not specified, instead relying on OpenSSL defaults. If the defaults are insecure, such as allowing aNULL cipher, this could lead to weakened security.
+
+### CWE-605: Multiple Binds to the Same Port
+<b>Abstraction:</b> Variant
+When multiple sockets are allowed to bind to the same port, other services on that port may be stolen or spoofed.
+
+<b>What was reviewed:</b>
+Files for separate processes that may open sockets that could bind to the same port: Services/ImageDecoder, Services/WebContent, Services/WebDriver. Looking for socket creation and bind calls with SO_REUSEADDR options used.
+
+<b>Key findings</b>
+Went through all services that are separate processed that might open sockets. They all use an abstraction layer for socket creation (Core::Socket) that does not use the SO_REUSEADDR option when binding sockets. There are no direct socket calls in the codebase that use SO_REUSEADDR. Therefore, multiple binds to the same port are not allowed, even across different processes.
+
+### CWE-322: Key Exchange without Entity Authentication
+<b>Abstraction:</b> Base
+The product performs a key exchange with an actor without verifying the identity of that actor.
+
+<b>What was reviewed:</b>
+Checked that the TLS implementation verifies the server certificate against trusted root CAs. Also checked for proper hostname verification and minimum TLS version enforcement.
+
+<b>Key findings</b>
+Certificate trust is delegated to the OS certificate store. TLS 1.2 is the minimum version allowed, per the lack of an explicit override of libcurl defaults. Hostnames are verified by default in the TLS handshake for the same reason. For websockets, which do not use libcurl, hostname verification is explicitly enabled in TLSv12.cpp:244, and TLS 1.2 is enforced.
+
+### CWE-347: Improper Verification of Cryptographic Signature
+<b>Abstraction:</b> Base
+The product does not verify, or incorrectly verifies, the cryptographic signature for data.
+
+<b>What was reviewed:</b>
+LibCrypto/Hash for signature verification functions, from the perspective of verifying hashes for script integrity. 
+
+<b>Key findings</b>
+The hash functions are in place (MD5, SHA1/2 files), but they are largely wrappers for OpenSSL functions. Relying on OpenSSL (a high-trust third party) for correct implementation.
 
 ### CWE-285: Improper Authorization
 <b>Abstraction:</b> Class
@@ -352,4 +393,14 @@ Overall, there is no mandatory SHA-256 requirement and thus no comprehensive int
 
 # Part 2
 
+## Summary of Findings
+
 In the file download assurance case, there are two critical vulnerabilities, the first being related to CWE-22. This CWE suggests that a file downloaded with a content-disposition header that renames the file to have an absolute filepath can force a file to be downloaded to a location outside the standard downloads folder. CWE-494 is the most important though in terms of file download vulnerability, where verified signatures are not required by the browser, so a compromised mirror or redirect could inject malicious code into artifacts used by the browser. This is magnified by the fact that even a user-visible download prompt would not prevent a malicious file from being downloaded.
+
+### Findings Related to the Security
+Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not high risk in our operating environment.
+
+## Reflection
+From this assignment, we learned useful techniques for performing code reviews in the context of security assurance. Specifically, the idea of identifying key CWEs and tailoring code review efforts around those weaknesses was a useful approach. This allowed for focused analysis that resulted in an easier time identifying either correct implementations or potential gaps.
+
+[Repository link](https://github.com/chauler/CYBR8420-Team5-Project)
