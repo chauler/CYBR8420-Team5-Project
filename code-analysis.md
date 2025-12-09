@@ -94,7 +94,7 @@ The product establishes a communication channel to handle an incoming request th
 Files related to encryption of network communications: LibTLS, LibCrypto/OpenSSL.cpp.
 
 <b>Key findings</b>
-Hostname verification is explicitly enabled in TLSv12.cpp. Handshake errors abort the connection, abandoning connections where verification fails.
+Hostname verification is explicitly enabled in TLSv12.cpp:244. Handshake errors abort the connection, abandoning connections where verification fails. This is for websocket connections. For regular HTTPS connections, hostname verification is handled by libcurl, which defaults to strict verification. This is not overridden by ladybird in the RequestServer or Request classes.
 OpenSSL cypher suites are not specified, instead relying on OpenSSL defaults. If the defaults are insecure, such as allowing aNULL cipher, this could lead to weakened security.
 
 ### CWE-605: Multiple Binds to the Same Port
@@ -105,7 +105,7 @@ When multiple sockets are allowed to bind to the same port, other services on th
 Files for separate processes that may open sockets that could bind to the same port: Services/ImageDecoder, Services/WebContent, Services/WebDriver. Looking for socket creation and bind calls with SO_REUSEADDR options used.
 
 <b>Key findings</b>
-Went through all services that are separate processed that might open sockets. They all use an abstraction layer for socket creation (Core::Socket) that does not use the SO_REUSEADDR option when binding sockets.
+Went through all services that are separate processed that might open sockets. They all use an abstraction layer for socket creation (Core::Socket) that does not use the SO_REUSEADDR option when binding sockets. There are no direct socket calls in the codebase that use SO_REUSEADDR. Therefore, multiple binds to the same port are not allowed, even across different processes.
 
 ### CWE-322: Key Exchange without Entity Authentication
 <b>Abstraction:</b> Base
@@ -115,7 +115,7 @@ The product performs a key exchange with an actor without verifying the identity
 Checked that the TLS implementation verifies the server certificate against trusted root CAs. Also checked for proper hostname verification and minimum TLS version enforcement.
 
 <b>Key findings</b>
-Certificate trust is delegated to the OS certificate store. TLS 1.2 is the minimum version allowed. Hostnames are verified by default in the TLS handshake.
+Certificate trust is delegated to the OS certificate store. TLS 1.2 is the minimum version allowed, per the lack of an explicit override of libcurl defaults. Hostnames are verified by default in the TLS handshake for the same reason. For websockets, which do not use libcurl, hostname verification is explicitly enabled in TLSv12.cpp:244, and TLS 1.2 is enforced.
 
 ### CWE-347: Improper Verification of Cryptographic Signature
 <b>Abstraction:</b> Base
@@ -236,7 +236,7 @@ A certificate must match the requested hostname (CN/SAN matching). Missing or in
 
 <b>Key findings:</b>
 
-1.	No clearly identifiable hostname-matching function in the TLS validation path.
+1.	No clearly identifiable hostname-matching function in the TLS validation path. #take note of this
 2.	SAN/CN comparison logic is not prominently visible.
 3.	If hostname validation is incomplete, an attacker could present a certificate for a different domain and still pass validation.
 4.	This is one of the highest-risk gaps for HTTPS correctness.
@@ -278,7 +278,7 @@ HTTPS security depends on rejecting weak cipher suites and disabling outdated TL
 
 <b>Key findings:</b>
 
-1.	No visible mechanism enforcing minimum TLS version (e.g., TLS 1.2+).
+1.	No visible mechanism enforcing minimum TLS version (e.g., TLS 1.2+). #Take note of this
 2.	It is unclear whether weak ciphers (e.g., RC4, null, export-grade) are filtered out.
 3.	Crypto library defaults may behave securely, but explicit hardening is not documented.
 4.	This merits enhancement to avoid cryptographic downgrade paths.
@@ -332,3 +332,7 @@ Summary of the automated code reviews that were performed
 # Part 2
 There is a lot of repeat in part 2 of what was asked for in part 1.  In part 1, we include a summary of the manual and automated code review findings. In part 2 we add in the perceived risk in our hypothetical operational environments (which I think is a professional workspace)
 For the planned contribution to the open-sourced project, we can pick one of the vulnerabilities that the automated code scanning identified. 
+
+## Summary of Findings
+
+Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not a major concern.
