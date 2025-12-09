@@ -374,6 +374,7 @@ Overall, there is no mandatory SHA-256 requirement and thus no comprehensive int
 
 ## Summary of Findings
 
+### Findings Related to file download security
 In the file download assurance case, there are two critical vulnerabilities, the first being related to CWE-22. This CWE suggests that a file downloaded with a content-disposition header that renames the file to have an absolute filepath can force a file to be downloaded to a location outside the standard downloads folder. CWE-494 is the most important though in terms of file download vulnerability, where verified signatures are not required by the browser, so a compromised mirror or redirect could inject malicious code into artifacts used by the browser. This is magnified by the fact that even a user-visible download prompt would not prevent a malicious file from being downloaded.
 
 ### Findings Related to HTTPS and Connection Security
@@ -384,7 +385,9 @@ My review of Ladybird’s secure connection path identified several potential we
 
 ## Reflection
 From this assignment, we learned useful techniques for performing code reviews in the context of security assurance. Specifically, the idea of identifying key CWEs and tailoring code review efforts around those weaknesses was a useful approach. This allowed for focused analysis that resulted in an easier time identifying either correct implementations or potential gaps. Additionally, the use of AI to do a manual code review, and going back and forth with it to identify relevant CWEs, their uses, and the weaknesses of the code to relevant CWEs was particularly useful. The AI chats that I used both provided particularly good context for the CWEs that I identified and helped create scenarios for exploitation. 
-
 This assignment helped me gain a deeper understanding of how TLS, certificate validation, and input-parsing logic function inside a browser’s codebase. Reviewing the implementation against specific CWEs made the analysis more structured and easier to scope, especially in a project as large as Ladybird. Overall, the exercise strengthened my ability to connect threat modeling, misuse cases, and code-level review into a single, focused security analysis workflow.
+
+## Planned Contributions
+In the realm of file downloads, the most crucial contribution would be to require signature verification on file downloads. It seems this would be a relatively simple change, but there may be areason for which they have not implemented this. Additionally, rejecting names with absolute paths or any other tamper-potential file names would reduce the potential for CWE-22. Ensuring the UI displays the sanitized, canonicalized file names would be a good change to make as well in this regard. Another idea unrelated to file downloads is with the display of images, wherein currently each image is made as its own process, so this could be combined to have all images generated together in a container. This would drastically reduce resource consumption. 
 
 [Repository link](https://github.com/chauler/CYBR8420-Team5-Project)
