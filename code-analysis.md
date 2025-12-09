@@ -335,6 +335,10 @@ For the planned contribution to the open-sourced project, we can pick one of the
 
 ## Summary of Findings
 
+### Findings Related to the Security
 Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not high risk in our operating environment.
+
+## Reflection
+From this assignment, we learned useful techniques for performing code reviews in the context of security assurance. Specifically, the idea of identifying key CWEs and tailoring code review efforts around those weaknesses was a useful approach. This allowed for focused analysis that resulted in an easier time identifying either correct implementations or potential gaps.
 
 [Repository link](https://github.com/chauler/CYBR8420-Team5-Project)
