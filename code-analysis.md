@@ -1,13 +1,9 @@
-## Top Claim #1 (Jason) - Browser protect user-stored data
-![Protect User-Stored Data Assurance Case](docs/assurance_cases/Navigate_URL_Assurance_Case_Revised.jpg)
-
-
 # Part 1
 
 ## Code-review strategy
 As a team, we decided to use a hybrid approach to our code review of the ladybird browser codebase. The ladybird browser is a fairly large and complex codebase to analyze. Each of us took the misuse and assurance cases that we created in previous assignments and focused on the code that provided those capabilities. We are doing a hybrid of scenario based and weakness based code review. 
 
-The code being C++ was going to add some complexity for automated scanning tools to perform a static analysis of the code because the tools would need to compile the code. We addressed these challenges by each team member selecting a different scanning tool to attempt. Between the five team members, we figured we should be able to get at least one or two automated code scanning tool results. We were able to successfully use Checkov, ..., but were not able to get SonarQube to work. We also performed manual code reviews to bridge the gap of static analysis for the automated tools and in total put together a list of CWEs most relevant to our assurance cases.  
+The code being C++ was going to add some complexity for automated scanning tools to perform a static analysis of the code because the tools would need to compile the code. We addressed these challenges by each team member selecting a different scanning tool to attempt. Between the five team members, we figured we should be able to get at least one or two automated code scanning tool results. We were able to successfully use Checkov and clang-analyzer, but were not able to get SonarQube to work. We also performed manual code reviews to bridge the gap of static analysis for the automated tools and in total put together a list of CWEs most relevant to our assurance cases.  
 
 ## CWE Analysis
 
@@ -21,7 +17,7 @@ The code transmits data to another actor, but a portion of the data includes sen
 
 Searched the codebase for locations that implement outgoing request construction and cookie access. This identified places in the code that could lead to "Insertion of Sensitive Information Into Sent Data" (CWE-201).
 
->b>Key findings:</b> 
+<b>Key findings:</b> 
 
 1.	In Libraries/LibWeb/Fetch/Fetching/Fetching.cpp cookies are explicitly appended to outgoing HTTP requests. If page_did_request_cookie is implemented incorrectly, it could include httpOnly cookies in contexts where they should not be exposed, for example JavaScript or it could return the cookie to the wrong origin which could leak sensitive information. 
 2.	In Libraries/LibWeb/Fetch/Fetching/Fetching.cpp if the serialization of the referrer url contains sensitive information, for example query parameters with PII or authentication tokens in the URL, those could be sent to a third party in the Referer header.
@@ -90,6 +86,47 @@ Search the codebase for hardcoded passwords (SWE-257), API keys, default secrets
 2.	In Tests/LibWeb/Text/expected/Fetch/fetch-requst-url-search-params.txt there is an exposed plain text username and password.
 3.	In Libraries/LibWeb/Cypto/Cryptokey.cpp the CryptoKey serialization includes "for_storage" path. In this scenario, private key material may be serialized. The code supports structured serialization with a for_storage flag that implies keys could be serialized for persistent storage which can possibly include private key material Private keys and secret symmetric keys, if serialized to storage as plaintext or in an extractable form, are secrets.
 
+### CWE-940: Improper Verification of Source of a Communication Channel
+<b>Abstraction:</b> Base
+The product establishes a communication channel to handle an incoming request that has been initiated by an actor, but it does not properly verify that the request is coming from the expected origin.
+
+<b>What was reviewed:</b>
+Files related to encryption of network communications: LibTLS, LibCrypto/OpenSSL.cpp.
+
+<b>Key findings</b>
+Hostname verification is explicitly enabled in TLSv12.cpp:244. Handshake errors abort the connection, abandoning connections where verification fails. This is for websocket connections. For regular HTTPS connections, hostname verification is handled by libcurl, which defaults to strict verification. This is not overridden by ladybird in the RequestServer or Request classes.
+OpenSSL cypher suites are not specified, instead relying on OpenSSL defaults. If the defaults are insecure, such as allowing aNULL cipher, this could lead to weakened security.
+
+### CWE-605: Multiple Binds to the Same Port
+<b>Abstraction:</b> Variant
+When multiple sockets are allowed to bind to the same port, other services on that port may be stolen or spoofed.
+
+<b>What was reviewed:</b>
+Files for separate processes that may open sockets that could bind to the same port: Services/ImageDecoder, Services/WebContent, Services/WebDriver. Looking for socket creation and bind calls with SO_REUSEADDR options used.
+
+<b>Key findings</b>
+Went through all services that are separate processed that might open sockets. They all use an abstraction layer for socket creation (Core::Socket) that does not use the SO_REUSEADDR option when binding sockets. There are no direct socket calls in the codebase that use SO_REUSEADDR. Therefore, multiple binds to the same port are not allowed, even across different processes.
+
+### CWE-322: Key Exchange without Entity Authentication
+<b>Abstraction:</b> Base
+The product performs a key exchange with an actor without verifying the identity of that actor.
+
+<b>What was reviewed:</b>
+Checked that the TLS implementation verifies the server certificate against trusted root CAs. Also checked for proper hostname verification and minimum TLS version enforcement.
+
+<b>Key findings</b>
+Certificate trust is delegated to the OS certificate store. TLS 1.2 is the minimum version allowed, per the lack of an explicit override of libcurl defaults. Hostnames are verified by default in the TLS handshake for the same reason. For websockets, which do not use libcurl, hostname verification is explicitly enabled in TLSv12.cpp:244, and TLS 1.2 is enforced.
+
+### CWE-347: Improper Verification of Cryptographic Signature
+<b>Abstraction:</b> Base
+The product does not verify, or incorrectly verifies, the cryptographic signature for data.
+
+<b>What was reviewed:</b>
+LibCrypto/Hash for signature verification functions, from the perspective of verifying hashes for script integrity. 
+
+<b>Key findings</b>
+The hash functions are in place (MD5, SHA1/2 files), but they are largely wrappers for OpenSSL functions. Relying on OpenSSL (a high-trust third party) for correct implementation.
+
 ### CWE-285: Improper Authorization
 <b>Abstraction:</b> Class
 
@@ -157,9 +194,197 @@ Runtime behavior under load, GitHub issue “Page with too many files” (#3185)
 3.	Because every tab’s networking goes through RequestServer, a resource exhaustion in that process can have browser-wide impact in that wew connections for other tabs may fail and existing connections might be dropped or starved if the process cannot allocate additional pipes or sockets.
 4.  The stress-test issue also implies that logging “too many open files” is not sufficient mitigation: the underlying resource allocation still failed, and the browser needs work to gracefully degrade. Without defensive throttling and bounds, this is the kind of behavior CWE-770 describes.
 
+### CWE-295: Improper Certificate Validation
 
-Summary of the automated code reviews that were performed
+
+<b>Abstraction:</b> Class
+
+
+<b>Why this CWE applies:</b>
+
+
+Certificate validation is central to the “Secure Web Connection” misuse case. If the certificate chain, trust anchors, or validation process is incomplete or incorrect, an attacker can impersonate a legitimate website and intercept secure communication.
+
+<b>What was reviewed:</b>
+
+I analyzed the TLS handshake and certificate validation logic in:
+•	Libraries/LibTLS/Handshake.cpp
+•	Libraries/LibTLS/Certificate.cpp
+•	Certificate-to-URL matching flow via RequestServer
+•	Trust store and chain verification behavior
+
+<b>Key findings:</b>
+
+1.	Certificate chain depth and trust-path construction are not clearly documented.
+2.	It is unclear whether full X.509 path validation (issuer/subject matching, basic constraints, key usage) is strictly enforced.
+3.	Certificate validation behavior appears partially delegated to platform trust store logic.
+4.	Lack of clarity makes it difficult to confirm if all validation checks run consistently across environments.
+
+### CWE-297: Improper Validation of Certificate with Host Mismatch
+
+<b>Abstraction:</b> Class
+
+<b>Why this CWE applies:</b>
+
+A certificate must match the requested hostname (CN/SAN matching). Missing or incorrect hostname validation allows man-in-the-middle attackers to use valid certificates for the wrong domain.
+
+<b>What was reviewed:</b>
+
+•	Hostname extraction via Libraries/LibURL/*
+•	TLS handshake code that should compare hostname with certificate SAN entries
+•	Integration points where RequestServer initiates secure connections
+
+<b>Key findings:</b>
+
+1.	No clearly identifiable hostname-matching function in the TLS validation path.
+2.	SAN/CN comparison logic is not prominently visible.
+3.	If hostname validation is incomplete, an attacker could present a certificate for a different domain and still pass validation.
+4.	This is one of the highest-risk gaps for HTTPS correctness.
+
+### CWE-299: Improper Check for Certificate Revocation
+
+<b>Abstraction:</b>  Class
+
+<b>Why this CWE applies:</b>
+
+Browsers must detect revoked certificates to block compromised sites. If revocation is not checked (via OCSP or CRL), a revoked certificate may be accepted as valid.
+
+<b>What was reviewed:</b>
+
+•	Libraries/LibTLS/* modules for OCSP/CRL logic
+•	HSTS implementation in LibWeb
+•	RequestServer secure connection paths
+
+<b>Key findings:</b>
+
+1.	No implementation for OCSP or CRL revocation checking.
+2.	HSTS does not enforce certificate revocation.
+3.	Browser currently relies on static trust store state, not dynamic revocation events.
+4.	This creates a blind spot where compromised certificates remain trusted.
+
+### CWE-20: Improper Input Validation
+
+<b>Abstraction:</b> Class
+
+<b>Why this CWE applies:</b>
+
+The browser accepts untrusted input through URLs, HTTP responses, TLS record parsing, and policy objects. Without strict validation, malformed inputs could bypass assumptions or cause memory issues.
+
+<b>What was reviewed:</b>
+
+•	Libraries/LibURL/Parser.cpp
+•	HTTP header and body handling in RequestServer
+•	TLS record parsing in LibTLS
+•	HSTS and trust-store metadata processing
+
+<b>Key findings:</b>
+
+1.	URL parsing is robust but may need stricter checks for deeply nested or malformed URLs.
+2.	HTTP header parsing should enforce strict size and format limits.
+3.	TLS record parsing uses buffers vulnerable to misreads if bounds are not enforced.
+4.	Trust-store inputs are accepted without deep validation, increasing risk if store integrity is compromised.
+
+### CWE-119 / CWE-120: Buffer Overflow / Unsafe Buffer Handling
+
+<b>Abstraction:</b> Base
+
+<b>Why this CWE applies:</b>
+
+C++ code handling TLS messages, records, and parsing is susceptible to buffer misuse, especially when static buffers or loops read untrusted data.
+
+<b>What was reviewed:</b>
+
+(Automated scan using Flawfinder)
+•	Libraries/LibTLS/TLSv12.cpp
+•	Libraries/LibURL/*
+•	Services/RequestServer/*
+
+<b>Key findings:</b>
+
+1.	Static buffers are used for TLS record operations (possible overflow scenarios).
+2.	Two loop-based reads lack explicit boundary validation.
+3.	WebSocketCurl code also contains buffer access patterns needing additional size checks.
+4.	All are low-to-medium severity but warrant manual review.
+
+
+### CWE-22: Improper Limitation of a Pathname to a Restricted Directory (Path Traversal / Zip-Slip)
+
+<b>Abstraction:</b> Class
+
+When a ZIP file is downloaded, the content-disposition header can be manipulated to include a specific filepath, allowing writes outside the intended download directory.
+
+<b>What was reviewed:</b>
+
+Searched for filename construction and parsing, and archive extraction helpers tied to download flows:
+
+Libraries/LibWeb/HTML/FormControlInfrastructure.cpp (Content-Disposition construction)
+
+Libraries/LibWeb/Fetch/Body.cpp (multipart/form-data header parsing)
+
+Meta/CMake/utils.cmake (archive extraction via file(ARCHIVE_EXTRACT))
+
+<b>Key findings:</b>
+
+Filenames are sanitized for control characters but not canonicalized; “..”, absolute paths, and path separators are not explicitly rejected.
+
+Header parsing for multipart/form-data is robust, but downstream filename handling does not enforce safe on-disk semantics.
+
+Archive extraction lacks explicit per-entry containment checks, enabling classic zip-slip if the extractor doesn’t enforce it.
+
+### CWE-78: Improper Neutralization of Special Elements Used in an OS Command (OS Command Injection)
+
+<b>Abstraction:</b> Class
+
+If environment values or filenames are used directly as executables or arguments without validation, an attacker can cause the execution of arbitrary binaries.
+
+<b>What was reviewed:</b>
+
+Searched for process execution paths and environment-driven command launches:
+
+Libraries/LibLine/InternalFunctions.cpp (external editor invocation)
+
+<b>Key findings:</b>
+
+In this scenario, the EDITOR is read from the environment and passed directly to execvp with no validation or whitelisting where the executable path is untrusted
+
+### CWE-494: Download of Code Without Integrity Check
+
+<b>Abstraction:</b> Base
+
+Downloading code or critical artifacts without mandatory hash/signature verification allows tampered content to be accepted even over HTTPS.
+
+<b>What was reviewed:</b>
+
+Examined build/tooling download paths and integrity enforcement:
+
+Meta/gn/build/download_file.py (Python download helper)
+
+Meta/CMake/utils.cmake (file(DOWNLOAD) helper)
+
+<b>Key findings:</b>
+
+The python helper supports optional SHA-256, but only verifies if a hash is provided.
+
+CMake helper can accept an expected hash, but usage is optional again. 
+
+Overall, there is no mandatory SHA-256 requirement and thus no comprehensive integrity check. 
+
 
 # Part 2
-There is a lot of repeat in part 2 of what was asked for in part 1.  In part 1, we include a summary of the manual and automated code review findings. In part 2 we add in the perceived risk in our hypothetical operational environments (which I think is a professional workspace)
-For the planned contribution to the open-sourced project, we can pick one of the vulnerabilities that the automated code scanning identified. 
+
+## Summary of Findings
+
+In the file download assurance case, there are two critical vulnerabilities, the first being related to CWE-22. This CWE suggests that a file downloaded with a content-disposition header that renames the file to have an absolute filepath can force a file to be downloaded to a location outside the standard downloads folder. CWE-494 is the most important though in terms of file download vulnerability, where verified signatures are not required by the browser, so a compromised mirror or redirect could inject malicious code into artifacts used by the browser. This is magnified by the fact that even a user-visible download prompt would not prevent a malicious file from being downloaded.
+
+### Findings Related to HTTPS and Connection Security
+Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not high risk in our operating environment. These CWEs were relevant for misuse cases related to MITM attacks and other attacks that attempt to inject malicious code via an insecure connection
+
+### Findings Related to Secure Web Connection
+My review of Ladybird’s secure connection path identified several potential weaknesses mapped to CWE-295, CWE-297, CWE-299, and CWE-20. Certificate-chain validation and trust-path logic are not clearly documented, hostname SAN/CN matching is not visibly enforced, and no OCSP/CRL revocation checks were found, creating uncertainty around certificate correctness. Input validation around URLs, HTTP headers, and TLS record parsing could also be strengthened. Automated Flawfinder scanning reported low-severity buffer-handling patterns that reinforce the importance of strict bounds checking when processing untrusted network data.
+
+## Reflection
+From this assignment, we learned useful techniques for performing code reviews in the context of security assurance. Specifically, the idea of identifying key CWEs and tailoring code review efforts around those weaknesses was a useful approach. This allowed for focused analysis that resulted in an easier time identifying either correct implementations or potential gaps. Additionally, the use of AI to do a manual code review, and going back and forth with it to identify relevant CWEs, their uses, and the weaknesses of the code to relevant CWEs was particularly useful. The AI chats that I used both provided particularly good context for the CWEs that I identified and helped create scenarios for exploitation. 
+
+This assignment helped me gain a deeper understanding of how TLS, certificate validation, and input-parsing logic function inside a browser’s codebase. Reviewing the implementation against specific CWEs made the analysis more structured and easier to scope, especially in a project as large as Ladybird. Overall, the exercise strengthened my ability to connect threat modeling, misuse cases, and code-level review into a single, focused security analysis workflow.
+
+[Repository link](https://github.com/chauler/CYBR8420-Team5-Project)
