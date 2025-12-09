@@ -262,27 +262,6 @@ Browsers must detect revoked certificates to block compromised sites. If revocat
 3.	Browser currently relies on static trust store state, not dynamic revocation events.
 4.	This creates a blind spot where compromised certificates remain trusted.
 
-### CWE-326: Inadequate Encryption Strength
-
-<b>Abstraction:</b> Class
-
-<b>Why this CWE applies:</b>
-
-HTTPS security depends on rejecting weak cipher suites and disabling outdated TLS versions. Lack of strict enforcement can allow downgrade attacks or insecure cryptographic primitives.
-
-<b>What was reviewed:</b>
-
-•	LibTLS/Handshake.cpp cipher negotiation
-•	Protocol version handling
-•	Crypto primitives and key sizes during TLS setup
-
-<b>Key findings:</b>
-
-1.	No visible mechanism enforcing minimum TLS version (e.g., TLS 1.2+).
-2.	It is unclear whether weak ciphers (e.g., RC4, null, export-grade) are filtered out.
-3.	Crypto library defaults may behave securely, but explicit hardening is not documented.
-4.	This merits enhancement to avoid cryptographic downgrade paths.
-
 ### CWE-20: Improper Input Validation
 
 <b>Abstraction:</b> Class
@@ -400,7 +379,12 @@ In the file download assurance case, there are two critical vulnerabilities, the
 ### Findings Related to HTTPS and Connection Security
 Most connection-related code, whether for HTTP or Websockets, is delegated to external libraries (libcurl, OpenSSL) that are well-established and widely used. Ladybird does not reimplement core TLS or HTTP functionality, which reduces the risk of custom implementation flaws. However, this delegation also means that Ladybird's security depends on the correct configuration and usage of these libraries. In several cases, Ladybird relies on library defaults without explicit hardening, which could lead to vulnerabilities if those defaults are weak or change over time. However, in its current state, the defaults used appear to be secure - libcurl by default enforces hostname verification and TLS 1.2 minimum, meaning that CWE-322 and CWE-940 are not high risk in our operating environment. These CWEs were relevant for misuse cases related to MITM attacks and other attacks that attempt to inject malicious code via an insecure connection
 
+### Findings Related to Secure Web Connection
+My review of Ladybird’s secure connection path identified several potential weaknesses mapped to CWE-295, CWE-297, CWE-299, and CWE-20. Certificate-chain validation and trust-path logic are not clearly documented, hostname SAN/CN matching is not visibly enforced, and no OCSP/CRL revocation checks were found, creating uncertainty around certificate correctness. Input validation around URLs, HTTP headers, and TLS record parsing could also be strengthened. Automated Flawfinder scanning reported low-severity buffer-handling patterns that reinforce the importance of strict bounds checking when processing untrusted network data.
+
 ## Reflection
 From this assignment, we learned useful techniques for performing code reviews in the context of security assurance. Specifically, the idea of identifying key CWEs and tailoring code review efforts around those weaknesses was a useful approach. This allowed for focused analysis that resulted in an easier time identifying either correct implementations or potential gaps. Additionally, the use of AI to do a manual code review, and going back and forth with it to identify relevant CWEs, their uses, and the weaknesses of the code to relevant CWEs was particularly useful. The AI chats that I used both provided particularly good context for the CWEs that I identified and helped create scenarios for exploitation. 
+
+This assignment helped me gain a deeper understanding of how TLS, certificate validation, and input-parsing logic function inside a browser’s codebase. Reviewing the implementation against specific CWEs made the analysis more structured and easier to scope, especially in a project as large as Ladybird. Overall, the exercise strengthened my ability to connect threat modeling, misuse cases, and code-level review into a single, focused security analysis workflow.
 
 [Repository link](https://github.com/chauler/CYBR8420-Team5-Project)
