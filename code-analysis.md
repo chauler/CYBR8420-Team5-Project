@@ -1,7 +1,3 @@
-## Top Claim #1 (Jason) - Browser protect user-stored data
-![Protect User-Stored Data Assurance Case](docs/assurance_cases/Navigate_URL_Assurance_Case_Revised.jpg)
-
-
 # Part 1
 
 ## Code-review strategy
@@ -130,6 +126,206 @@ LibCrypto/Hash for signature verification functions, from the perspective of ver
 
 <b>Key findings</b>
 The hash functions are in place (MD5, SHA1/2 files), but they are largely wrappers for OpenSSL functions. Relying on OpenSSL (a high-trust third party) for correct implementation.
+
+### CWE-285: Improper Authorization
+<b>Abstraction:</b> Class
+
+The product does not perform or incorrectly performs an authorization check when an actor attempts to access a resource or perform an action.
+
+<b>What was reviewed:</b>
+
+Focused on the parts of the code and documentation that describe how RequestServer serves as a network broker for renderer-like processes: Documentation / architecture - Documentation/Browser/ProcessArchitecture.md (multi-process model; WebContent → RequestServer → network). Network broker implementation - Services/RequestServer/* (HTTP/HTTPS and WebSocket job creation, LibCurl integration, connection cache). Callers / clients - WebContent / WebView integration paths that initiate RequestServer jobs. 
+
+
+<b>Key findings</b>
+
+1.	In Services/RequestServer/ConnectionFromClient.cpp, RequestServer builds outgoing HTTP/WebSocket jobs on behalf of its clients (WebContent, workers, etc.) using parameters received over IPC. If the RequestServer side only validates request shape (URL, method, headers) but does not bind the request to the caller’s security context (origin, profile, permission set), then any renderer that can reach RequestServer could perform network actions it is not authorized for such as cross-profile requests, access to internal endpoints, or bypassing per-tab restrictions.
+2.	The architecture document notes that each WebContent process gets its own RequestServer instance for uploads/downloads. If that one-to-one mapping is not strictly enforced or is later relaxed (for example, multiple WebContent clients sharing one RequestServer instance, or non-WebContent clients using the same IPC endpoint), authorization decisions may need extra per-client checks. Missing or inconsistent checks can become improper authorization issues.
+3.	Any trusted capability exposed over its IPC API such as opening arbitrary TCP connections, following redirects, or sending non-HTTP traffic must be guarded by authorization logic. If future embedders add new IPC messages or privileged network features and forget to enforce “who is allowed to call this,” those become CWE-285 weaknesses even if the core RequestServer code is otherwise correct.
+4.  Because RequestServer is a separate process, OS-level privileges and sandboxing may differ from WebContent. If RequestServer runs with broader filesystem or network permissions than WebContent, but the IPC layer treats all clients equally, this can allow less-privileged components to borrow RequestServer’s privileges unless the API performs explicit authorization for sensitive actions.
+
+### CWE-441: Unintended Proxy or Intermediary (“Confused Deputy”)
+<b>Abstraction:</b> Class
+
+The product receives a request or directive from an upstream component but does not sufficiently preserve or enforce the original source when forwarding it to an external actor, causing the product to act as an unintended proxy or intermediary. 
+
+<b>What was reviewed:</b>
+
+Process architecture - The documentation that describes RequestServer as the process that actually “uses networking protocols (HTTP/HTTPS) to request files from the outside world” on behalf of WebContent. Request forwarding paths - Services/RequestServer/ConnectionFromClient.cpp for how incoming IPC requests are translated into LibCurl jobs and outbound connections. RequestServer connection caching and URL handling (ConnectionCache.cpp, AK::URL::serialized_host usage) as seen in upstream issue reports. 
+
+
+<b>Key findings</b>
+
+1.	RequestServer’s role matches the CWE-441 threat model: a component receives requests from less-privileged clients and forwards them to external network endpoints using its own network privileges. If RequestServer does not track the client who requested and does not enforce per-client policies, any client that can send IPC messages could potentially ask RequestServer to contact internal IPs/ports and abuse unusual schemes or protocols exposed via LibCurl backends such as FTP and custom schemes if those are enabled but not filtered by policy.
+2.	CWE-441 examples often arise when a product forwards traffic on behalf of a client without enforcing its own access rules, effectively letting the client tunnel through firewalls or network boundaries. Because RequestServer runs as a separate process that may have different OS-level network visibility than the WebContent sandbox, it can become that “network deputy.” If WebContent can send arbitrary HTTP headers or arbitrary target hosts/ports through IPC, Ladybird risks becoming a generic network proxy.
+3.	Even if Ladybird never exposes RequestServer directly to untrusted external clients, a compromised WebContent process could use the RequestServer API as a stepping stone to move laterally or exfiltrate data by having a more trusted process speak on its behalf.
+
+### CWE-923: Improper Restriction of Communication Channel to Intended Endpoints
+<b>Abstraction:</b> Class
+
+The product establishes a communication channel to (or from) an endpoint for privileged or protected operations, but it does not properly ensure that it is communicating with the correct endpoint.  
+
+<b>What was reviewed:</b>
+
+Inter-process communication - The conceptual RequestServer IPC endpoints used by WebContent and potentially other clients. Backend network and DNS layers - Mention of the stub resolver (LibDNS::Resolver) and its integration with RequestServer/LibCurl in external discussions. The architecture doc’s discussion that RequestServer relies on a global LookupServer service for DNS queries. 
+
+
+<b>Key findings</b>
+
+1.	Multiple communication channels must be correctly “bound” to their intended endpoints: WebContent → RequestServer: The IPC channel should ensure that only the associated WebContent instance can issue network requests to its RequestServer. If other local processes can spoof this endpoint or connect to the same IPC interface, they could inherit the same network privileges, which maps directly to CWE-923. RequestServer → LookupServer/DNS: If RequestServer relies on a separate DNS resolver (LookupServer or LibDNS stub resolver) without verifying that it is the legitimate system resolver, malicious local processes could impersonate or MITM that resolver and control where outgoing connections go.
+2.	For external network connections, RequestServer translates a URL and options into a LibCurl job. External references show that WebSocket and HTTP handling are implemented in single files such as ConnectionFromClient.cpp, which manage how endpoints and protocols are chosen. If RequestServer does not enforce constraints like: “Only connect to the hostname derived from the original URL and DNS resolution,” “Do not follow redirects to disallowed schemes/hosts,” or “Do not reuse connection state from one origin for another,” then it risks mis-binding communication channels and talking to unintended endpoints, which is the core of CWE-923.
+3.	As the browser evolves by additions such as adding support for system proxies, HTTP/2/3, or custom backends, any new connection path must ensure that it is bound to the correct intended remote endpoint, and the IPC channel only allows authorized local clients to use that path. Otherwise, both local spoofing and remote redirection attacks may fall under CWE-923.
+
+
+### CWE-770: Allocation of Resources Without Limits or Throttling
+<b>Abstraction:</b> Class
+
+The product allocates a reusable resource or group of resources on behalf of an actor without imposing limits on the size or number of resources that can be allocated. 
+
+<b>What was reviewed:</b>
+
+Runtime behavior under load, GitHub issue “Page with too many files” (#3185), where navigating to a Wikipedia page with many external resources causes RequestServer to log repeated errors: StartRequest: Failed to create pipe: pipe2: Too many open files (errno=24) while CPU spikes to 100%. Network job handling, Services/RequestServer/* which is responsible for creating per-request jobs and managing connections for each WebContent client. 
+
+
+<b>Key findings</b>
+
+1.	The “Too many open files (errno=24)” logs from RequestServer on a resource-heavy page show that, under stress, the process can hit OS-level descriptor limits just by handling a single page with many resources. This is strong evidence that RequestServer will eagerly allocate OS resources like pipes, connections, and file descriptors on behalf of content without effectively throttling or pooling them.
+2.	From a CWE-770 perspective, this suggests the per-tab or per-origin limits on outstanding requests, connections, or open pipes may either not exist or not be tuned for worst-case pages. A malicious page instead of just a heavy Wikipedia page, could deliberately exploit this by issuing many parallel requests via JavaScript, <img> floods, or WebSockets, consuming all available descriptors in the RequestServer process and causing denial of service for other tabs.
+3.	Because every tab’s networking goes through RequestServer, a resource exhaustion in that process can have browser-wide impact in that wew connections for other tabs may fail and existing connections might be dropped or starved if the process cannot allocate additional pipes or sockets.
+4.  The stress-test issue also implies that logging “too many open files” is not sufficient mitigation: the underlying resource allocation still failed, and the browser needs work to gracefully degrade. Without defensive throttling and bounds, this is the kind of behavior CWE-770 describes.
+
+### CWE-295: Improper Certificate Validation
+
+
+<b>Abstraction:</b> Class
+
+
+<b>Why this CWE applies:</b>
+
+
+Certificate validation is central to the “Secure Web Connection” misuse case. If the certificate chain, trust anchors, or validation process is incomplete or incorrect, an attacker can impersonate a legitimate website and intercept secure communication.
+
+<b>What was reviewed:</b>
+
+I analyzed the TLS handshake and certificate validation logic in:
+•	Libraries/LibTLS/Handshake.cpp
+•	Libraries/LibTLS/Certificate.cpp
+•	Certificate-to-URL matching flow via RequestServer
+•	Trust store and chain verification behavior
+
+<b>Key findings:</b>
+
+1.	Certificate chain depth and trust-path construction are not clearly documented.
+2.	It is unclear whether full X.509 path validation (issuer/subject matching, basic constraints, key usage) is strictly enforced.
+3.	Certificate validation behavior appears partially delegated to platform trust store logic.
+4.	Lack of clarity makes it difficult to confirm if all validation checks run consistently across environments.
+
+### CWE-297: Improper Validation of Certificate with Host Mismatch
+
+<b>Abstraction:</b> Class
+
+<b>Why this CWE applies:</b>
+
+A certificate must match the requested hostname (CN/SAN matching). Missing or incorrect hostname validation allows man-in-the-middle attackers to use valid certificates for the wrong domain.
+
+<b>What was reviewed:</b>
+
+•	Hostname extraction via Libraries/LibURL/*
+•	TLS handshake code that should compare hostname with certificate SAN entries
+•	Integration points where RequestServer initiates secure connections
+
+<b>Key findings:</b>
+
+1.	No clearly identifiable hostname-matching function in the TLS validation path.
+2.	SAN/CN comparison logic is not prominently visible.
+3.	If hostname validation is incomplete, an attacker could present a certificate for a different domain and still pass validation.
+4.	This is one of the highest-risk gaps for HTTPS correctness.
+
+### CWE-299: Improper Check for Certificate Revocation
+
+<b>Abstraction:</b>  Class
+
+<b>Why this CWE applies:</b>
+
+Browsers must detect revoked certificates to block compromised sites. If revocation is not checked (via OCSP or CRL), a revoked certificate may be accepted as valid.
+
+<b>What was reviewed:</b>
+
+•	Libraries/LibTLS/* modules for OCSP/CRL logic
+•	HSTS implementation in LibWeb
+•	RequestServer secure connection paths
+
+<b>Key findings:</b>
+
+1.	No implementation for OCSP or CRL revocation checking.
+2.	HSTS does not enforce certificate revocation.
+3.	Browser currently relies on static trust store state, not dynamic revocation events.
+4.	This creates a blind spot where compromised certificates remain trusted.
+
+### CWE-326: Inadequate Encryption Strength
+
+<b>Abstraction:</b> Class
+
+<b>Why this CWE applies:</b>
+
+HTTPS security depends on rejecting weak cipher suites and disabling outdated TLS versions. Lack of strict enforcement can allow downgrade attacks or insecure cryptographic primitives.
+
+<b>What was reviewed:</b>
+
+•	LibTLS/Handshake.cpp cipher negotiation
+•	Protocol version handling
+•	Crypto primitives and key sizes during TLS setup
+
+<b>Key findings:</b>
+
+1.	No visible mechanism enforcing minimum TLS version (e.g., TLS 1.2+).
+2.	It is unclear whether weak ciphers (e.g., RC4, null, export-grade) are filtered out.
+3.	Crypto library defaults may behave securely, but explicit hardening is not documented.
+4.	This merits enhancement to avoid cryptographic downgrade paths.
+
+### CWE-20: Improper Input Validation
+
+<b>Abstraction:</b> Class
+
+<b>Why this CWE applies:</b>
+
+The browser accepts untrusted input through URLs, HTTP responses, TLS record parsing, and policy objects. Without strict validation, malformed inputs could bypass assumptions or cause memory issues.
+
+<b>What was reviewed:</b>
+
+•	Libraries/LibURL/Parser.cpp
+•	HTTP header and body handling in RequestServer
+•	TLS record parsing in LibTLS
+•	HSTS and trust-store metadata processing
+
+<b>Key findings:</b>
+
+1.	URL parsing is robust but may need stricter checks for deeply nested or malformed URLs.
+2.	HTTP header parsing should enforce strict size and format limits.
+3.	TLS record parsing uses buffers vulnerable to misreads if bounds are not enforced.
+4.	Trust-store inputs are accepted without deep validation, increasing risk if store integrity is compromised.
+
+### CWE-119 / CWE-120: Buffer Overflow / Unsafe Buffer Handling
+
+<b>Abstraction:</b> Base
+
+<b>Why this CWE applies:</b>
+
+C++ code handling TLS messages, records, and parsing is susceptible to buffer misuse, especially when static buffers or loops read untrusted data.
+
+<b>What was reviewed:</b>
+
+(Automated scan using Flawfinder)
+•	Libraries/LibTLS/TLSv12.cpp
+•	Libraries/LibURL/*
+•	Services/RequestServer/*
+
+<b>Key findings:</b>
+
+1.	Static buffers are used for TLS record operations (possible overflow scenarios).
+2.	Two loop-based reads lack explicit boundary validation.
+3.	WebSocketCurl code also contains buffer access patterns needing additional size checks.
+4.	All are low-to-medium severity but warrant manual review.
 
 Summary of the automated code reviews that were performed
 
